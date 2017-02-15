@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+	<!--缓存注解扫描-->
+	<cache:annotation-driven/>
+	<!-- 加载配置文件 -->
+	<context:property-placeholder location="classpath:properties/db.properties" />
+	<!-- 数据库连接池 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		  destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="${jdbc.initialSize}"/>
+		<property name="maxActive" value="${jdbc.maxActive}"/>
+		<property name="maxIdle" value="${jdbc.maxIdle}"/>
+		<property name="defaultAutoCommit" value="${jdbc.defaultAutoCommit}"/>
+		<property name="removeAbandoned" value="true"/>
+		<property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}"/>
+		<property name="logAbandoned" value="${jdbc.logAbandoned}"/>
+		<!--主动检测连接池是否有效-->
+		<property name="testWhileIdle" value="${jdbc.testWhileIdle}"/>
+		<property name="validationQuery" value="${jdbc.validationQuery}"/>
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}"/>
+	</bean>
+	<!-- 配置SqlsessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 加载mybatis的配置文件 -->
+		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"/>
+		<!-- 配置数据源 -->
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<!-- 配置包扫描器，扫描mapper接口生成代理对象放到spring容器中 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指定要扫描的包 -->
+		<property name="basePackage" value="com.easybuy.ming.mapper"/>
+	</bean>
+	<!-- 配置包扫描器，扫描@Service主键的类 -->
+	<context:component-scan base-package="com.easybuy.ming.*.service.*"/>
+	<!-- 事务配置 -->
+	<!-- 事务管理器 -->
+	<bean id="transactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 数据源 -->
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 传播行为 -->
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 切面 -->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice"
+					 pointcut="execution(* com.easybuy.ming.*.service.*.*(..))" />
+	</aop:config>
+	<!-- 注解驱动 -->
+	<mvc:annotation-driven />
+	<!-- 视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- 包扫描器，扫描@Controller注解 -->
+	<context:component-scan base-package="com.easybuy.ming.*.controller" />
+	<!-- 配置资源映射 -->
+	<mvc:resources location="assets" mapping="/apps/**"/>
+	<mvc:resources location="assets" mapping="/global/**"/>
+	<mvc:resources location="assets" mapping="/layouts/**"/>
+	<mvc:resources location="assets" mapping="/pages/**"/>
+	<!-- 定义文件上传解析器 -->
+	<bean id="multipartResolver"
+		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设定默认编码 -->
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+		<property name="maxUploadSize" value="5242880"></property>
+	</bean>
+
+
+	<!--ehcache缓存配置，基于xml-->
+	<bean id="ehcacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:cache/ehcache.xml" />
+		<property name="shared" value="true"></property>
+	</bean>
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+		<property name="cacheManager" ref="ehcacheManagerFactory"/>
+	</bean>
+	<!--<cache:advice id="cacheAdvice" cache-manager="cacheManager">-->
+	<!--<cache:caching cache="methodCache">-->
+	<!--<cache:cacheable method="find*"/>-->
+	<!--<cache:cacheable method="get*"/>-->
+	<!--<cache:cacheable method="select*"/>-->
+	<!--<cache:cache-evict method="delete*" all-entries="true"/>-->
+	<!--<cache:cache-evict method="save*" all-entries="true"/>-->
+	<!--<cache:cache-evict method="insert*" all-entries="true"/>-->
+	<!--<cache:cache-evict method="update*" all-entries="true"/>-->
+	<!--<cache:cache-evict method="create*" all-entries="true"/>-->
+	<!--<cache:cache-evict method="add*" all-entries="true"/>-->
+	<!--</cache:caching>-->
+	<!--</cache:advice>-->
+	<!--<aop:config proxy-target-class="true">-->
+	<!--<aop:advisor advice-ref="cacheAdvice" pointcut="execution(* com.easybuy.ming.*.service.*.*(..))"/>-->
+	<!--</aop:config>-->
+
+
+	<!--配置定时任务-->
+	<!--1.配置job到spring容器-->
+	<bean id="schedule" class="com.easybuy.ming.utils.QuartzUtils"></bean>
+	<!--2.将job类配置jobDetail-->
+	<bean id="SpringQtzJobMethod"
+		  class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="schedule" />
+		</property>
+		<property name="targetMethod"> <!-- 要执行的方法名称 -->
+			<value>testQuartz</value>
+		</property>
+	</bean>
+
+	<!--3.配置调度触发器-->
+	<bean id="cronTriggerFactoryBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean
+">
+		<property name="jobDetail" ref="SpringQtzJobMethod"></property>
+		<property name="cronExpression" value="*/50 * * * * ?"></property>
+	</bean>
+	<!--4.配置调度工厂-->
+	<bean id="SpringJobSchedulerFactoryBean"
+		  class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cronTriggerFactoryBean" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!--配置消息队列-->
+	<!--<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>-->
+	<!--&lt;!&ndash; 配置扫描路径 &ndash;&gt;-->
+	<context:component-scan base-package="com.easybuy.ming.utils">
+		<!-- 只扫描Service，也可以添加Repostory，但是要把Controller排除在外，Controller由spring-mvc.xml去加载 -->
+		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+
+
+	<!-- 统一异常处理 -->
+	<bean id="exceptionHandler" class="com.easybuy.ming.utils.MyExceptionHandler"/>
+	<!--配置shiro-->
+	<bean id="myRealm" class="com.easybuy.ming.utils.MyRealm">
+	</bean>
+
+	<!-- 用户授权信息Cache, 采用EhCache -->
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:cache/ehcache.xml" />
+		<!--<property name="cacheManager" ref="ehcacheManagerFactory" />-->
+	</bean>
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myRealm"/>
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"/>
+		<property name="loginUrl" value="/toLogin.do"/>
+		<property name="successUrl" value="/index.do"/>
+		<property name="unauthorizedUrl" value=""/>
+		<property name="filterChainDefinitions">
+			<value>
+				/login.do=anon
+				/toLogin.do=anon
+				/user=authc
+				/assets/** = anon
+				/** = authc
+			</value>
+		</property>
+	</bean>
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	<!-- AOP式方法级权限检查 -->
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager"/>
+	</bean>
+	<!-- 启用shrio授权注解拦截方式 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+
+</beans>
