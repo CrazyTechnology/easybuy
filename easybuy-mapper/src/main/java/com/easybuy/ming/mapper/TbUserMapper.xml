@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.com.ming.mapper.TbUserMapper">
-    <resultMap id="BaseResultMap" type="com.com.ming.pojo.TbUser">
+<mapper namespace="com.easybuy.ming.mapper.TbUserMapper">
+    <resultMap id="BaseResultMap" type="com.easybuy.ming.pojo.TbUser">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="username" property="username" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
@@ -73,7 +73,7 @@
     <sql id="Base_Column_List">
         id, username, password, phone, email, created, updated
     </sql>
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.com.ming.pojo.TbUserExample">
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easybuy.ming.pojo.TbUserExample">
         select
         <if test="distinct">
             distinct
@@ -97,13 +97,13 @@
         delete from tb_user
         where id = #{id,jdbcType=BIGINT}
     </delete>
-    <delete id="deleteByExample" parameterType="com.com.ming.pojo.TbUserExample">
+    <delete id="deleteByExample" parameterType="com.easybuy.ming.pojo.TbUserExample">
         delete from tb_user
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.com.ming.pojo.TbUser">
+    <insert id="insert" parameterType="com.easybuy.ming.pojo.TbUser">
         insert into tb_user (id, username, password,
         phone, email, created,
         updated)
@@ -111,7 +111,7 @@
         #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP},
         #{updated,jdbcType=TIMESTAMP})
     </insert>
-    <insert id="insertSelective" parameterType="com.com.ming.pojo.TbUser">
+    <insert id="insertSelective" parameterType="com.easybuy.ming.pojo.TbUser">
         insert into tb_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -160,7 +160,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.com.ming.pojo.TbUserExample" resultType="java.lang.Integer">
+    <select id="countByExample" parameterType="com.easybuy.ming.pojo.TbUserExample" resultType="java.lang.Integer">
         select count(*) from tb_user
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -208,7 +208,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.com.ming.pojo.TbUser">
+    <update id="updateByPrimaryKeySelective" parameterType="com.easybuy.ming.pojo.TbUser">
         update tb_user
         <set>
             <if test="username != null">
@@ -232,7 +232,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.com.ming.pojo.TbUser">
+    <update id="updateByPrimaryKey" parameterType="com.easybuy.ming.pojo.TbUser">
         update tb_user
         set username = #{username,jdbcType=VARCHAR},
         password = #{password,jdbcType=VARCHAR},

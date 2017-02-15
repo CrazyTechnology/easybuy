@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.com.ming.mapper.TbItemParamKeyMapper">
-    <resultMap id="BaseResultMap" type="com.com.ming.pojo.TbItemParamKey">
+<mapper namespace="com.easybuy.ming.mapper.TbItemParamKeyMapper">
+    <resultMap id="BaseResultMap" type="com.easybuy.ming.pojo.TbItemParamKey">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="param_name" property="paramName" jdbcType="VARCHAR"/>
         <result column="group_id" property="groupId" jdbcType="INTEGER"/>
@@ -69,7 +69,7 @@
     <sql id="Base_Column_List">
         id, param_name, group_id
     </sql>
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.com.ming.pojo.TbItemParamKeyExample">
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easybuy.ming.pojo.TbItemParamKeyExample">
         select
         <if test="distinct">
             distinct
@@ -93,19 +93,19 @@
         delete from tb_item_param_key
         where id = #{id,jdbcType=INTEGER}
     </delete>
-    <delete id="deleteByExample" parameterType="com.com.ming.pojo.TbItemParamKeyExample">
+    <delete id="deleteByExample" parameterType="com.easybuy.ming.pojo.TbItemParamKeyExample">
         delete from tb_item_param_key
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.com.ming.pojo.TbItemParamKey">
+    <insert id="insert" parameterType="com.easybuy.ming.pojo.TbItemParamKey">
         insert into tb_item_param_key (id, param_name, group_id
         )
         values (#{id,jdbcType=INTEGER}, #{paramName,jdbcType=VARCHAR}, #{groupId,jdbcType=INTEGER}
         )
     </insert>
-    <insert id="insertSelective" parameterType="com.com.ming.pojo.TbItemParamKey">
+    <insert id="insertSelective" parameterType="com.easybuy.ming.pojo.TbItemParamKey">
         insert into tb_item_param_key
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -130,7 +130,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.com.ming.pojo.TbItemParamKeyExample"
+    <select id="countByExample" parameterType="com.easybuy.ming.pojo.TbItemParamKeyExample"
             resultType="java.lang.Integer">
         select count(*) from tb_item_param_key
         <if test="_parameter != null">
@@ -163,7 +163,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.com.ming.pojo.TbItemParamKey">
+    <update id="updateByPrimaryKeySelective" parameterType="com.easybuy.ming.pojo.TbItemParamKey">
         update tb_item_param_key
         <set>
             <if test="paramName != null">
@@ -175,7 +175,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.com.ming.pojo.TbItemParamKey">
+    <update id="updateByPrimaryKey" parameterType="com.easybuy.ming.pojo.TbItemParamKey">
         update tb_item_param_key
         set param_name = #{paramName,jdbcType=VARCHAR},
         group_id = #{groupId,jdbcType=INTEGER}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.com.ming.mapper.TbDictMapper">
-    <resultMap id="BaseResultMap" type="com.com.ming.pojo.TbDict">
+<mapper namespace="com.easybuy.ming.mapper.TbDictMapper">
+    <resultMap id="BaseResultMap" type="com.easybuy.ming.pojo.TbDict">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="code" property="code" jdbcType="VARCHAR"/>
         <result column="dict_name" property="dictName" jdbcType="VARCHAR"/>
@@ -70,7 +70,7 @@
     <sql id="Base_Column_List">
     id, code, dict_name, item_name
   </sql>
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.com.ming.pojo.TbDictExample">
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easybuy.ming.pojo.TbDictExample">
         select
         <if test="distinct">
             distinct
@@ -94,19 +94,19 @@
     delete from tb_dict
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <delete id="deleteByExample" parameterType="com.com.ming.pojo.TbDictExample">
+    <delete id="deleteByExample" parameterType="com.easybuy.ming.pojo.TbDictExample">
         delete from tb_dict
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.com.ming.pojo.TbDict">
+    <insert id="insert" parameterType="com.easybuy.ming.pojo.TbDict">
     insert into tb_dict (id, code, dict_name, 
       item_name)
     values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{dictName,jdbcType=VARCHAR}, 
       #{itemName,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.com.ming.pojo.TbDict">
+    <insert id="insertSelective" parameterType="com.easybuy.ming.pojo.TbDict">
         insert into tb_dict
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -137,7 +137,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.com.ming.pojo.TbDictExample" resultType="java.lang.Integer">
+    <select id="countByExample" parameterType="com.easybuy.ming.pojo.TbDictExample" resultType="java.lang.Integer">
         select count(*) from tb_dict
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -173,7 +173,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.com.ming.pojo.TbDict">
+    <update id="updateByPrimaryKeySelective" parameterType="com.easybuy.ming.pojo.TbDict">
         update tb_dict
         <set>
             <if test="code != null">
@@ -188,7 +188,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.com.ming.pojo.TbDict">
+    <update id="updateByPrimaryKey" parameterType="com.easybuy.ming.pojo.TbDict">
     update tb_dict
     set code = #{code,jdbcType=VARCHAR},
       dict_name = #{dictName,jdbcType=VARCHAR},

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.com.ming.mapper.TbDeptUserMapper">
+<mapper namespace="com.easybuy.ming.mapper.TbDeptUserMapper">
   <cache type="org.mybatis.caches.ehcache.LoggingEhcache">
     <property name="timeToIdleSeconds" value="3600"/>
     <property name="timeToLiveSeconds" value="3600"/>
@@ -8,7 +8,7 @@
     <property name="maxEntriesLocalDisk" value="10000000"/>
     <property name="memoryStoreEvictionPolicy" value="LRU"/>
   </cache>
-  <resultMap id="BaseResultMap" type="com.com.ming.pojo.TbDeptUser">
+  <resultMap id="BaseResultMap" type="com.easybuy.ming.pojo.TbDeptUser">
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
@@ -81,7 +81,7 @@
   <sql id="Base_Column_List" >
     users.id, users.name, users.sex, users.dept_id, users.role_id, users.password, users.login_name,users.tel
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.com.ming.pojo.TbDeptUserExample">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.easybuy.ming.pojo.TbDeptUserExample">
     select
     <if test="distinct" >
       distinct
@@ -108,13 +108,13 @@
     delete from tb_dept_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.com.ming.pojo.TbDeptUserExample">
+  <delete id="deleteByExample" parameterType="com.easybuy.ming.pojo.TbDeptUserExample">
     delete from tb_dept_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.com.ming.pojo.TbDeptUser">
+  <insert id="insert" parameterType="com.easybuy.ming.pojo.TbDeptUser">
     insert into tb_dept_user (id, name, sex, 
       dept_id, role_id, password, 
       login_name)
@@ -122,7 +122,7 @@
       #{deptId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{loginName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.com.ming.pojo.TbDeptUser">
+  <insert id="insertSelective" parameterType="com.easybuy.ming.pojo.TbDeptUser">
     insert into tb_dept_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -177,7 +177,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.com.ming.pojo.TbDeptUserExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.easybuy.ming.pojo.TbDeptUserExample" resultType="java.lang.Integer">
     select count(*) from tb_dept_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -225,7 +225,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.com.ming.pojo.TbDeptUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.easybuy.ming.pojo.TbDeptUser">
     update tb_dept_user
     <set >
       <if test="name != null" >
@@ -249,7 +249,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.com.ming.pojo.TbDeptUser">
+  <update id="updateByPrimaryKey" parameterType="com.easybuy.ming.pojo.TbDeptUser">
     update tb_dept_user
     set name = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},

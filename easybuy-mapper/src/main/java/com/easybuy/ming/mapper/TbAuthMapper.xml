@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.com.ming.mapper.TbAuthMapper">
+<mapper namespace="com.easybuy.ming.mapper.TbAuthMapper">
     <cache type="org.mybatis.caches.ehcache.LoggingEhcache">
         <property name="timeToIdleSeconds" value="3600"/>
         <property name="timeToLiveSeconds" value="3600"/>
@@ -8,7 +8,7 @@
         <property name="maxEntriesLocalDisk" value="10000000"/>
         <property name="memoryStoreEvictionPolicy" value="LRU"/>
     </cache>
-    <resultMap id="BaseResultMap" type="com.com.ming.pojo.TbAuth">
+    <resultMap id="BaseResultMap" type="com.easybuy.ming.pojo.TbAuth">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="permission" property="permission" jdbcType="VARCHAR"/>
@@ -103,13 +103,13 @@
     delete from tb_auth
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <delete id="deleteByExample" parameterType="com.com.ming.pojo.TbAuthExample">
+    <delete id="deleteByExample" parameterType="com.easybuy.ming.pojo.TbAuthExample">
         delete from tb_auth
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insert" parameterType="com.com.ming.pojo.TbAuth">
+    <insert id="insert" parameterType="com.easybuy.ming.pojo.TbAuth">
     insert into tb_auth (id, name, permission, 
       level, role_id, description, 
       type, url, openway)
@@ -117,7 +117,7 @@
       #{level,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
       #{type,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{openway,jdbcType=INTEGER})
   </insert>
-    <insert id="insertSelective" parameterType="com.com.ming.pojo.TbAuth">
+    <insert id="insertSelective" parameterType="com.easybuy.ming.pojo.TbAuth">
         insert into tb_auth
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -184,7 +184,7 @@
             </if>
         </trim>
     </insert>
-    <select id="countByExample" parameterType="com.com.ming.pojo.TbAuthExample" resultType="java.lang.Integer">
+    <select id="countByExample" parameterType="com.easybuy.ming.pojo.TbAuthExample" resultType="java.lang.Integer">
         select count(*) from tb_auth
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -240,7 +240,7 @@
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
     </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.com.ming.pojo.TbAuth">
+    <update id="updateByPrimaryKeySelective" parameterType="com.easybuy.ming.pojo.TbAuth">
         update tb_auth
         <set>
             <if test="name != null">
@@ -270,7 +270,7 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.com.ming.pojo.TbAuth">
+    <update id="updateByPrimaryKey" parameterType="com.easybuy.ming.pojo.TbAuth">
     update tb_auth
     set name = #{name,jdbcType=VARCHAR},
       permission = #{permission,jdbcType=VARCHAR},
@@ -285,7 +285,7 @@
 
 
     <!--根据parentId查询菜单-->
-    <select id="selectByParentId" parameterType="integer" resultType="com.com.ming.pojo.TbAuth" useCache="false">
+    <select id="selectByParentId" parameterType="integer" resultType="com.easybuy.ming.pojo.TbAuth" useCache="false">
         SELECT
         <include refid="Base_Column_List"/>
         from tb_auth
@@ -302,7 +302,7 @@
 
 
     <!--根据用户名权限，查询菜单-->
-    <select id="findMenuJson" resultType="com.com.ming.pojo.TbAuth">
+    <select id="findMenuJson" resultType="com.easybuy.ming.pojo.TbAuth">
         SELECT
         <include refid="Base_Column_List"/>
         from tb_auth
