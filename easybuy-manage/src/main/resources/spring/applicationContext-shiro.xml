@@ -9,9 +9,9 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
     <!-- 统一异常处理 -->
-    <bean id="exceptionHandler" class="com.easybuy.ming.utils.MyExceptionHandler"/>
+    <bean id="exceptionHandler" class="com.easybuy.ming.manage.utils.MyExceptionHandler"/>
     <!--配置shiro-->
-    <bean id="myRealm" class="com.easybuy.ming.utils.MyRealm">
+    <bean id="myRealm" class="com.easybuy.ming.manage.utils.MyRealm">
     </bean>
 
     <!-- 用户授权信息Cache, 采用EhCache -->
