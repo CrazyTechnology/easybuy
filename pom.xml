@@ -9,6 +9,7 @@
         <module>easybuy-mapper</module>
         <module>easybuy-common</module>
         <module>easybuy-manage</module>
+        <module>easybuy-portal</module>
     </modules>
     <groupId>com.easybuy.ming</groupId>
     <artifactId>easybuy</artifactId>
