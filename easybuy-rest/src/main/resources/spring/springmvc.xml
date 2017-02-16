@@ -15,12 +15,5 @@
 	</bean>
 	<!-- 包扫描器，扫描@Controller注解 -->
 	<context:component-scan base-package="com.easybuy.ming.rest.*.controller"/>
-	<!-- 定义文件上传解析器 -->
-	<bean id="multipartResolver"
-		  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- 设定默认编码 -->
-		<property name="defaultEncoding" value="UTF-8"></property>
-		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
-		<property name="maxUploadSize" value="5242880"></property>
-	</bean>
+
 </beans>
