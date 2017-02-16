@@ -9,10 +9,6 @@ window.onload=function(){
 		otext.value='';
 		otext.style.color='rgb(51, 51, 51)';
 	};
-
-
-
-	alert('请点击【电脑】跳转到【列表页】')
 }
 
 $(function(){
