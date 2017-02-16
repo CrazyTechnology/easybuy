@@ -6,16 +6,15 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>easybuy-portal</artifactId>
+    <artifactId>easybuy-rest</artifactId>
     <packaging>war</packaging>
-    <name>easybuy-portal</name>
+    <name>easybuy-rest Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
-        <!--项目依赖-->
         <dependency>
-            <groupId>com.easybuy.ming</groupId>
-            <artifactId>easybuy-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.easybuy.ming</groupId>
@@ -27,11 +26,6 @@
             <artifactId>easybuy-mapper</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <!--测试-->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -40,6 +34,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -55,10 +50,6 @@
         </dependency>
         <!-- JSP相关 -->
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <scope>provided</scope>
@@ -68,20 +59,13 @@
             <artifactId>jsp-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <!-- Redis客户端 -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
     </dependencies>
     <build>
-        <finalName>easybuy-portal</finalName>
-        <plugins>
-            <!-- 配置Tomcat插件 -->
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <configuration>
-                    <port>8081</port>
-                    <path>/</path>
-                </configuration>
-            </plugin>
-        </plugins>
+        <finalName>easybuy-rest</finalName>
     </build>
 </project>

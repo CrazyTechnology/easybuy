@@ -43,29 +43,5 @@
         <!-- 指定要扫描的包 -->
         <property name="basePackage" value="com.easybuy.ming.mapper"/>
     </bean>
-    <!--ehcache缓存配置，基于xml-->
-    <bean id="ehcacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-        <property name="configLocation" value="classpath:cache/ehcache.xml"/>
-        <property name="shared" value="true"></property>
-    </bean>
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
-        <property name="cacheManager" ref="ehcacheManagerFactory"/>
-    </bean>
-    <!--<cache:advice id="cacheAdvice" cache-manager="cacheManager">-->
-    <!--<cache:caching cache="methodCache">-->
-    <!--<cache:cacheable method="find*"/>-->
-    <!--<cache:cacheable method="get*"/>-->
-    <!--<cache:cacheable method="select*"/>-->
-    <!--<cache:cache-evict method="delete*" all-entries="true"/>-->
-    <!--<cache:cache-evict method="save*" all-entries="true"/>-->
-    <!--<cache:cache-evict method="insert*" all-entries="true"/>-->
-    <!--<cache:cache-evict method="update*" all-entries="true"/>-->
-    <!--<cache:cache-evict method="create*" all-entries="true"/>-->
-    <!--<cache:cache-evict method="add*" all-entries="true"/>-->
-    <!--</cache:caching>-->
-    <!--</cache:advice>-->
-    <!--<aop:config proxy-target-class="true">-->
-    <!--<aop:advisor advice-ref="cacheAdvice" pointcut="execution(* com.easybuy.ming.*.service.*.*(..))"/>-->
-    <!--</aop:config>-->
 
 </beans>
