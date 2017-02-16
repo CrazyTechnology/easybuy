@@ -76,14 +76,7 @@
                 <i class="ci-leftll">
                     <s class="jt">◇</s>
                 </i>
-                <div class="bj-1">
-                    <a href="">北京</a><a href="">上海</a><a href="">天津</a><a href="">重庆</a><a href="">河北</a><a
-                        href="">山西</a><a href="">河南</a><a href="">辽宁</a><a href="">吉林</a><a href="">黑龙江</a><a
-                        href="">浙江</a><a href="">江苏</a><a href="">山东</a><a href="">安徽</a><a href="">内蒙古</a><a
-                        href="">湖北</a><a href="">湖南</a><a href="">广东</a><a href="">广西</a><a href="">江西</a><a
-                        href="">四川</a><a href="">海南</a><a href="">贵州</a><a href="">云南</a><a href="">西藏</a><a
-                        href="">陕西</a><a href="">甘肃</a><a href="">青海</a><a href="">宁夏</a><a href="">新疆</a><a
-                        href="">台湾</a><a href="">香港</a><a href="">澳门</a><a href="">海外</a><a href="">钓鱼岛</a>
+                <div class="bj-1" id="city">
                 </div>
             </li>
         </ul>
@@ -4336,5 +4329,28 @@
 <!-- <script src="js/jquery-1.11.3.min.js" ></script> -->
 <script src="js/jquery.min.js"></script>
 <script src="js/index.js"></script>
-
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            dataType: "jsonp",//跨域访问 dataType 必须是jsonp 类型。
+            url:"http://localhost:8082/rest/common/getCity?callback=?",
+            type:"GET",
+            jsonp:"callbackparam",
+            jsonpCallback:"success",
+            success: function(response) {
+                for(var i=0;i<response.length;i++){
+                    var name=response[i].province;
+                    var html="<a href='javascript:void(0)'>"+name+"</a>"
+                    $("#city").append(html);
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("status"+XMLHttpRequest.status);
+                alert("readyState"+XMLHttpRequest.readyState);
+                alert("textstatus"+textStatus);
+                alert(errorThrown);
+            }
+        });
+    });
+</script>
 </html>
