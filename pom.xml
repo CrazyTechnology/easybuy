@@ -10,6 +10,7 @@
         <module>easybuy-common</module>
         <module>easybuy-manage</module>
         <module>easybuy-portal</module>
+        <module>easybuy-rest</module>
     </modules>
     <groupId>com.easybuy.ming</groupId>
     <artifactId>easybuy</artifactId>
