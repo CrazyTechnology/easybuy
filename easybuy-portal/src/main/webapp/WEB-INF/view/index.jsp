@@ -324,8 +324,8 @@
 <div class="w">
     <div class="logo"><a href=""><img src="./images/logo.png"></a></div>
     <div class="search">
-        <input type="text" value="家电一折抢" class="text" id="textt">
-        <button class="button">搜索</button>
+        <input type="text" value="家电一折抢" class="text" id="search">
+        <button class="button" onclick="searchSolr();">搜索</button>
     </div>
     <div class="right">
         <i class="gw-left" style="background:url(./images/jd2015img.png)0 -58px no-repeat;width:24px;height:24px;"></i>
@@ -4340,7 +4340,7 @@
             success: function(response) {
                 for(var i=0;i<response.length;i++){
                     var name=response[i].province;
-                    var html="<a href='javascript:void(0)'>"+name+"</a>"
+                    var html="<a href='javascript:void(0);'>"+name+"</a>"
                     $("#city").append(html);
                 }
             },
@@ -4352,5 +4352,9 @@
             }
         });
     });
+
+    function searchSolr(){
+
+    }
 </script>
 </html>
