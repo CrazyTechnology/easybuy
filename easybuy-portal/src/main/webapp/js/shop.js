@@ -1,7 +1,5 @@
 window.onload=function(){
   //图片的轮播
-alert('请点击图片跳转到【详情页面】')
-
   var lunbo1=function () {
         $('.zh1 .sh  img').attr('src','images/cn/5.jpg')
         $('.zh1 .zh ').html('奥维尼非凡系列电脑包 12.5/13.3英寸防水笔记本内胆包 联想华硕苹果')
