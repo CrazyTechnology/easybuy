@@ -243,11 +243,6 @@
                 <artifactId>solr-analysis-extras</artifactId>
                 <version>${solrj.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.solr</groupId>
-                <artifactId>solr-parent</artifactId>
-                <version>${solrj.version}</version>
-            </dependency>
             <!--freemark-->
             <dependency>
                 <groupId>org.freemarker</groupId>
