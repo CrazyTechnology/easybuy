@@ -129,7 +129,7 @@ exports.DEFLATE = _dereq_('./flate');
 },{"./flate":8}],4:[function(_dereq_,module,exports){
 'use strict';
 
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 
 var table = [
     0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA,
@@ -232,7 +232,7 @@ module.exports = function crc32(input, crc) {
 
 },{"./utils":21}],5:[function(_dereq_,module,exports){
 'use strict';
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 
 function DataReader(data) {
     this.data = null; // type : see implementation
@@ -354,7 +354,7 @@ exports.dosPermissions = null;
 
 },{}],7:[function(_dereq_,module,exports){
 'use strict';
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 
 /**
  * @deprecated
@@ -627,7 +627,7 @@ module.exports = NodeBufferReader;
 },{"./uint8ArrayReader":18}],13:[function(_dereq_,module,exports){
 'use strict';
 var support = _dereq_('./support');
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 var crc32 = _dereq_('./crc32');
 var signature = _dereq_('./signature');
 var defaults = _dereq_('./defaults');
@@ -1204,7 +1204,7 @@ var generateZipParts = function(name, file, compressedObject, offset, platform) 
     var dirRecord = signature.CENTRAL_FILE_HEADER +
     // version made by (00: DOS)
     decToHex(versionMadeBy, 2) +
-    // file header (utils to file and central directory)
+    // file header (redis to file and central directory)
     header +
     // file comment length
     decToHex(utfEncodedComment.length, 2) +
@@ -1521,7 +1521,7 @@ exports.DATA_DESCRIPTOR = "PK\x07\x08";
 },{}],15:[function(_dereq_,module,exports){
 'use strict';
 var DataReader = _dereq_('./dataReader');
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 
 function StringReader(data, optimizedBinaryString) {
     this.data = data;
@@ -1559,7 +1559,7 @@ module.exports = StringReader;
 },{"./dataReader":5,"./utils":21}],16:[function(_dereq_,module,exports){
 'use strict';
 
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 
 /**
  * An object to write any content to a string.
@@ -1678,7 +1678,7 @@ module.exports = Uint8ArrayReader;
 },{"./dataReader":5}],19:[function(_dereq_,module,exports){
 'use strict';
 
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 
 /**
  * An object to write any content to an Uint8Array.
@@ -1716,12 +1716,12 @@ module.exports = Uint8ArrayWriter;
 },{"./utils":21}],20:[function(_dereq_,module,exports){
 'use strict';
 
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 var support = _dereq_('./support');
 var nodeBuffer = _dereq_('./nodeBuffer');
 
 /**
- * The following functions come from pako, from pako/lib/utils/strings
+ * The following functions come from pako, from pako/lib/redis/strings
  * released under the MIT license, see pako https://github.com/nodeca/pako/
  */
 
@@ -2172,7 +2172,7 @@ exports.transformTo = function(outputType, input) {
 
 /**
  * Return the type of the input.
- * The type will be in a format valid for JSZip.utils.transformTo : string, array, uint8array, arraybuffer.
+ * The type will be in a format valid for JSZip.redis.transformTo : string, array, uint8array, arraybuffer.
  * @param {Object} input the input to identify.
  * @return {String} the (lowercase) type of the input.
  */
@@ -2255,7 +2255,7 @@ exports.isRegExp = function (object) {
 var StringReader = _dereq_('./stringReader');
 var NodeBufferReader = _dereq_('./nodeBufferReader');
 var Uint8ArrayReader = _dereq_('./uint8ArrayReader');
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 var sig = _dereq_('./signature');
 var ZipEntry = _dereq_('./zipEntry');
 var support = _dereq_('./support');
@@ -2476,7 +2476,7 @@ module.exports = ZipEntries;
 },{"./nodeBufferReader":12,"./object":13,"./signature":14,"./stringReader":15,"./support":17,"./uint8ArrayReader":18,"./utils":21,"./zipEntry":23}],23:[function(_dereq_,module,exports){
 'use strict';
 var StringReader = _dereq_('./stringReader');
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 var CompressedObject = _dereq_('./compressedObject');
 var jszipProto = _dereq_('./object');
 
@@ -2789,7 +2789,7 @@ module.exports = ZipEntry;
 // Top level file is just a mixin of submodules & constants
 'use strict';
 
-var assign    = _dereq_('./lib/utils/utils').assign;
+var assign    = _dereq_('./lib/redis/redis').assign;
 
 var deflate   = _dereq_('./lib/deflate');
 var inflate   = _dereq_('./lib/inflate');
@@ -2805,8 +2805,8 @@ module.exports = pako;
 
 
 var zlib_deflate = _dereq_('./zlib/deflate.js');
-var utils = _dereq_('./utils/utils');
-var strings = _dereq_('./utils/strings');
+var utils = _dereq_('./redis/redis');
+var strings = _dereq_('./redis/strings');
 var msg = _dereq_('./zlib/messages');
 var zstream = _dereq_('./zlib/zstream');
 
@@ -3167,8 +3167,8 @@ exports.gzip = gzip;
 
 
 var zlib_inflate = _dereq_('./zlib/inflate.js');
-var utils = _dereq_('./utils/utils');
-var strings = _dereq_('./utils/strings');
+var utils = _dereq_('./redis/redis');
+var strings = _dereq_('./redis/strings');
 var c = _dereq_('./zlib/constants');
 var msg = _dereq_('./zlib/messages');
 var zstream = _dereq_('./zlib/zstream');
@@ -3636,7 +3636,7 @@ exports.setTyped(TYPED_OK);
 'use strict';
 
 
-var utils = _dereq_('./utils');
+var utils = _dereq_('./redis');
 
 
 // Quick check if we can use fast array to bin string conversion
@@ -3944,7 +3944,7 @@ module.exports = crc32;
 },{}],32:[function(_dereq_,module,exports){
 'use strict';
 
-var utils   = _dereq_('../utils/utils');
+var utils   = _dereq_('../redis/redis');
 var trees   = _dereq_('./trees');
 var adler32 = _dereq_('./adler32');
 var crc32   = _dereq_('./crc32');
@@ -5956,7 +5956,7 @@ module.exports = function inflate_fast(strm, start) {
               }
               from = 0; // window index
               from_source = window;
-              if (wnext === 0) {           /* very utils case */
+              if (wnext === 0) {           /* very redis case */
                 from += wsize - op;
                 if (op < len) {         /* some from window */
                   len -= op;
@@ -6079,7 +6079,7 @@ module.exports = function inflate_fast(strm, start) {
 'use strict';
 
 
-var utils = _dereq_('../utils/utils');
+var utils = _dereq_('../redis/redis');
 var adler32 = _dereq_('./adler32');
 var crc32   = _dereq_('./crc32');
 var inflate_fast = _dereq_('./inffast');
@@ -6228,7 +6228,7 @@ function InflateState() {
    because we don't have pointers in js, we use lencode and distcode directly
    as buffers so we don't need codes
   */
-  //this.codes = new utils.Buf32(ENOUGH);       /* space for code tables */
+  //this.codes = new redis.Buf32(ENOUGH);       /* space for code tables */
   this.lendyn = null;              /* dynamic table for length/literal codes (JS specific) */
   this.distdyn = null;             /* dynamic table for distance codes (JS specific) */
   this.sane = 0;                   /* if false, allow invalid distance too far */
@@ -7583,7 +7583,7 @@ exports.inflateUndermine = inflateUndermine;
 'use strict';
 
 
-var utils = _dereq_('../utils/utils');
+var utils = _dereq_('../redis/redis');
 
 var MAXBITS = 15;
 var ENOUGH_LENS = 852;
@@ -7924,7 +7924,7 @@ module.exports = {
 'use strict';
 
 
-var utils = _dereq_('../utils/utils');
+var utils = _dereq_('../redis/redis');
 
 /* Public constants ==========================================================*/
 /* ===========================================================================*/

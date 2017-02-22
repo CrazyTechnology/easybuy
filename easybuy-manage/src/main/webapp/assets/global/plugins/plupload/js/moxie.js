@@ -92,7 +92,7 @@
 		}
 	}
 
-// Included from: src/javascript/core/utils/Basic.js
+// Included from: src/javascript/core/redis/Basic.js
 
 /**
  * Basic.js
@@ -488,7 +488,7 @@ define('moxie/core/utils/Basic', [], function() {
  */
 
 define("moxie/core/I18n", [
-	"moxie/core/utils/Basic"
+	"moxie/core/redis/Basic"
 ], function(Basic) {
 	var i18n = {};
 
@@ -540,7 +540,7 @@ define("moxie/core/I18n", [
 	};
 });
 
-// Included from: src/javascript/core/utils/Mime.js
+// Included from: src/javascript/core/redis/Mime.js
 
 /**
  * Mime.js
@@ -553,7 +553,7 @@ define("moxie/core/I18n", [
  */
 
 define("moxie/core/utils/Mime", [
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/core/I18n"
 ], function(Basic, I18n) {
 	
@@ -733,7 +733,7 @@ define("moxie/core/utils/Mime", [
 	return Mime;
 });
 
-// Included from: src/javascript/core/utils/Env.js
+// Included from: src/javascript/core/redis/Env.js
 
 /**
  * Env.js
@@ -746,7 +746,7 @@ define("moxie/core/utils/Mime", [
  */
 
 define("moxie/core/utils/Env", [
-	"moxie/core/utils/Basic"
+	"moxie/core/redis/Basic"
 ], function(Basic) {
 	
 	// UAParser.js v0.6.2
@@ -1369,7 +1369,7 @@ define("moxie/core/utils/Env", [
 	return Env;
 });
 
-// Included from: src/javascript/core/utils/Dom.js
+// Included from: src/javascript/core/redis/Dom.js
 
 /**
  * Dom.js
@@ -1381,7 +1381,7 @@ define("moxie/core/utils/Env", [
  * Contributing: http://www.plupload.com/contributing
  */
 
-define('moxie/core/utils/Dom', ['moxie/core/utils/Env'], function(Env) {
+define('moxie/core/utils/Dom', ['moxie/core/redis/Env'], function(Env) {
 
 	/**
 	Get DOM Element by it's id.
@@ -1565,7 +1565,7 @@ define('moxie/core/utils/Dom', ['moxie/core/utils/Env'], function(Env) {
  */
 
 define('moxie/core/Exceptions', [
-	'moxie/core/utils/Basic'
+	'moxie/core/redis/Basic'
 ], function(Basic) {
 	function _findKey(obj, value) {
 		var key;
@@ -1724,7 +1724,7 @@ define('moxie/core/Exceptions', [
 
 define('moxie/core/EventTarget', [
 	'moxie/core/Exceptions',
-	'moxie/core/utils/Basic'
+	'moxie/core/redis/Basic'
 ], function(x, Basic) {
 	/**
 	Parent object for all event dispatching components and objects
@@ -2003,7 +2003,7 @@ define('moxie/core/EventTarget', [
 	return EventTarget;
 });
 
-// Included from: src/javascript/core/utils/Encode.js
+// Included from: src/javascript/core/redis/Encode.js
 
 /**
  * Encode.js
@@ -2196,8 +2196,8 @@ define('moxie/core/utils/Encode', [], function() {
  */
 
 define('moxie/runtime/Runtime', [
-	"moxie/core/utils/Basic",
-	"moxie/core/utils/Dom",
+	"moxie/core/redis/Basic",
+	"moxie/core/redis/Dom",
 	"moxie/core/EventTarget"
 ], function(Basic, Dom, EventTarget) {
 	var runtimeConstructors = {}, runtimes = {};
@@ -2786,7 +2786,7 @@ define('moxie/runtime/Runtime', [
 
 define('moxie/runtime/RuntimeClient', [
 	'moxie/core/Exceptions',
-	'moxie/core/utils/Basic',
+	'moxie/core/redis/Basic',
 	'moxie/runtime/Runtime'
 ], function(x, Basic, Runtime) {
 	/**
@@ -2923,8 +2923,8 @@ define('moxie/runtime/RuntimeClient', [
  */
 
 define('moxie/file/Blob', [
-	'moxie/core/utils/Basic',
-	'moxie/core/utils/Encode',
+	'moxie/core/redis/Basic',
+	'moxie/core/redis/Encode',
 	'moxie/runtime/RuntimeClient'
 ], function(Basic, Encode, RuntimeClient) {
 	
@@ -3101,8 +3101,8 @@ define('moxie/file/Blob', [
  */
 
 define('moxie/file/File', [
-	'moxie/core/utils/Basic',
-	'moxie/core/utils/Mime',
+	'moxie/core/redis/Basic',
+	'moxie/core/redis/Mime',
 	'moxie/file/Blob'
 ], function(Basic, Mime, Blob) {
 	/**
@@ -3189,9 +3189,9 @@ define('moxie/file/File', [
  */
 
 define('moxie/file/FileInput', [
-	'moxie/core/utils/Basic',
-	'moxie/core/utils/Mime',
-	'moxie/core/utils/Dom',
+	'moxie/core/redis/Basic',
+	'moxie/core/redis/Mime',
+	'moxie/core/redis/Dom',
 	'moxie/core/Exceptions',
 	'moxie/core/EventTarget',
 	'moxie/core/I18n',
@@ -3527,13 +3527,13 @@ define('moxie/file/FileInput', [
 
 define('moxie/file/FileDrop', [
 	'moxie/core/I18n',
-	'moxie/core/utils/Dom',
+	'moxie/core/redis/Dom',
 	'moxie/core/Exceptions',
-	'moxie/core/utils/Basic',
+	'moxie/core/redis/Basic',
 	'moxie/file/File',
 	'moxie/runtime/RuntimeClient',
 	'moxie/core/EventTarget',
-	'moxie/core/utils/Mime'
+	'moxie/core/redis/Mime'
 ], function(I18n, Dom, x, Basic, File, RuntimeClient, EventTarget, Mime) {
 	/**
 	Turn arbitrary DOM element to a drop zone accepting files. Converts selected files to _File_ objects, to be used 
@@ -3708,7 +3708,7 @@ define('moxie/file/FileDrop', [
  */
 
 define('moxie/runtime/RuntimeTarget', [
-	'moxie/core/utils/Basic',
+	'moxie/core/redis/Basic',
 	'moxie/runtime/RuntimeClient',
 	"moxie/core/EventTarget"
 ], function(Basic, RuntimeClient, EventTarget) {
@@ -3750,8 +3750,8 @@ define('moxie/runtime/RuntimeTarget', [
  */
 
 define('moxie/file/FileReader', [
-	'moxie/core/utils/Basic',
-	'moxie/core/utils/Encode',
+	'moxie/core/redis/Basic',
+	'moxie/core/redis/Encode',
 	'moxie/core/Exceptions',
 	'moxie/core/EventTarget',
 	'moxie/file/Blob',
@@ -4034,7 +4034,7 @@ define('moxie/file/FileReader', [
 	return FileReader;
 });
 
-// Included from: src/javascript/core/utils/Url.js
+// Included from: src/javascript/core/redis/Url.js
 
 /**
  * Url.js
@@ -4173,9 +4173,9 @@ define('moxie/core/utils/Url', [], function() {
  */
 
 define('moxie/file/FileReaderSync', [
-	'moxie/core/utils/Basic',
+	'moxie/core/redis/Basic',
 	'moxie/runtime/RuntimeClient',
-	'moxie/core/utils/Encode'
+	'moxie/core/redis/Encode'
 ], function(Basic, RuntimeClient, Encode) {
 	/**
 	Synchronous FileReader implementation. Something like this is available in WebWorkers environment, here
@@ -4247,7 +4247,7 @@ define('moxie/file/FileReaderSync', [
 
 define("moxie/xhr/FormData", [
 	"moxie/core/Exceptions",
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/file/Blob"
 ], function(x, Basic, Blob) {
 	/**
@@ -4365,18 +4365,18 @@ define("moxie/xhr/FormData", [
  */
 
 define("moxie/xhr/XMLHttpRequest", [
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/core/Exceptions",
 	"moxie/core/EventTarget",
-	"moxie/core/utils/Encode",
-	"moxie/core/utils/Url",
+	"moxie/core/redis/Encode",
+	"moxie/core/redis/Url",
 	"moxie/runtime/Runtime",
 	"moxie/runtime/RuntimeTarget",
 	"moxie/file/Blob",
 	"moxie/file/FileReaderSync",
 	"moxie/xhr/FormData",
-	"moxie/core/utils/Env",
-	"moxie/core/utils/Mime"
+	"moxie/core/redis/Env",
+	"moxie/core/redis/Mime"
 ], function(Basic, x, EventTarget, Encode, Url, Runtime, RuntimeTarget, Blob, FileReaderSync, FormData, Env, Mime) {
 
 	var httpCode = {
@@ -5317,8 +5317,8 @@ define("moxie/xhr/XMLHttpRequest", [
  */
 
 define("moxie/runtime/Transporter", [
-	"moxie/core/utils/Basic",
-	"moxie/core/utils/Encode",
+	"moxie/core/redis/Basic",
+	"moxie/core/redis/Encode",
 	"moxie/runtime/RuntimeClient",
 	"moxie/core/EventTarget"
 ], function(Basic, Encode, RuntimeClient, EventTarget) {
@@ -5454,19 +5454,19 @@ define("moxie/runtime/Transporter", [
  */
 
 define("moxie/image/Image", [
-	"moxie/core/utils/Basic",
-	"moxie/core/utils/Dom",
+	"moxie/core/redis/Basic",
+	"moxie/core/redis/Dom",
 	"moxie/core/Exceptions",
 	"moxie/file/FileReaderSync",
 	"moxie/xhr/XMLHttpRequest",
 	"moxie/runtime/Runtime",
 	"moxie/runtime/RuntimeClient",
 	"moxie/runtime/Transporter",
-	"moxie/core/utils/Env",
+	"moxie/core/redis/Env",
 	"moxie/core/EventTarget",
 	"moxie/file/Blob",
 	"moxie/file/File",
-	"moxie/core/utils/Encode"
+	"moxie/core/redis/Encode"
 ], function(Basic, Dom, x, FileReaderSync, XMLHttpRequest, Runtime, RuntimeClient, Transporter, Env, EventTarget, Blob, File, Encode) {
 	/**
 	Image preloading and manipulation utility. Additionally it provides access to image meta info (Exif, GPS) and raw binary data.
@@ -6068,10 +6068,10 @@ Defines constructor for HTML5 runtime.
 @private
 */
 define("moxie/runtime/html5/Runtime", [
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/core/Exceptions",
 	"moxie/runtime/Runtime",
-	"moxie/core/utils/Env"
+	"moxie/core/redis/Env"
 ], function(Basic, x, Runtime, Env) {
 	
 	var type = "html5", extensions = {};
@@ -6216,7 +6216,7 @@ define("moxie/runtime/html5/file/Blob", [
 	return (extensions.Blob = HTML5Blob);
 });
 
-// Included from: src/javascript/core/utils/Events.js
+// Included from: src/javascript/core/redis/Events.js
 
 /**
  * Events.js
@@ -6229,7 +6229,7 @@ define("moxie/runtime/html5/file/Blob", [
  */
 
 define('moxie/core/utils/Events', [
-	'moxie/core/utils/Basic'
+	'moxie/core/redis/Basic'
 ], function(Basic) {
 	var eventhash = {}, uid = 'moxie_' + Basic.guid();
 	
@@ -6407,11 +6407,11 @@ define('moxie/core/utils/Events', [
 */
 define("moxie/runtime/html5/file/FileInput", [
 	"moxie/runtime/html5/Runtime",
-	"moxie/core/utils/Basic",
-	"moxie/core/utils/Dom",
-	"moxie/core/utils/Events",
-	"moxie/core/utils/Mime",
-	"moxie/core/utils/Env"
+	"moxie/core/redis/Basic",
+	"moxie/core/redis/Dom",
+	"moxie/core/redis/Events",
+	"moxie/core/redis/Mime",
+	"moxie/core/redis/Env"
 ], function(extensions, Basic, Dom, Events, Mime, Env) {
 	
 	function FileInput() {
@@ -6578,10 +6578,10 @@ define("moxie/runtime/html5/file/FileInput", [
 */
 define("moxie/runtime/html5/file/FileDrop", [
 	"moxie/runtime/html5/Runtime",
-	"moxie/core/utils/Basic",
-	"moxie/core/utils/Dom",
-	"moxie/core/utils/Events",
-	"moxie/core/utils/Mime"
+	"moxie/core/redis/Basic",
+	"moxie/core/redis/Dom",
+	"moxie/core/redis/Events",
+	"moxie/core/redis/Mime"
 ], function(extensions, Basic, Dom, Events, Mime) {
 	
 	function FileDrop() {
@@ -6779,8 +6779,8 @@ define("moxie/runtime/html5/file/FileDrop", [
 */
 define("moxie/runtime/html5/file/FileReader", [
 	"moxie/runtime/html5/Runtime",
-	"moxie/core/utils/Encode",
-	"moxie/core/utils/Basic"
+	"moxie/core/redis/Encode",
+	"moxie/core/redis/Basic"
 ], function(extensions, Encode, Basic) {
 	
 	function FileReader() {
@@ -6861,14 +6861,14 @@ define("moxie/runtime/html5/file/FileReader", [
 */
 define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 	"moxie/runtime/html5/Runtime",
-	"moxie/core/utils/Basic",
-	"moxie/core/utils/Mime",
-	"moxie/core/utils/Url",
+	"moxie/core/redis/Basic",
+	"moxie/core/redis/Mime",
+	"moxie/core/redis/Url",
 	"moxie/file/File",
 	"moxie/file/Blob",
 	"moxie/xhr/FormData",
 	"moxie/core/Exceptions",
-	"moxie/core/utils/Env"
+	"moxie/core/redis/Env"
 ], function(extensions, Basic, Mime, Url, File, Blob, FormData, x, Env) {
 	
 	function XMLHttpRequest() {
@@ -7216,7 +7216,7 @@ define("moxie/runtime/html5/xhr/XMLHttpRequest", [
 	return (extensions.XMLHttpRequest = XMLHttpRequest);
 });
 
-// Included from: src/javascript/runtime/html5/utils/BinaryReader.js
+// Included from: src/javascript/runtime/html5/redis/BinaryReader.js
 
 /**
  * BinaryReader.js
@@ -7342,7 +7342,7 @@ define("moxie/runtime/html5/utils/BinaryReader", [], function() {
 @private
 */
 define("moxie/runtime/html5/image/JPEGHeaders", [
-	"moxie/runtime/html5/utils/BinaryReader"
+	"moxie/runtime/html5/redis/BinaryReader"
 ], function(BinaryReader) {
 	
 	return function JPEGHeaders(data) {
@@ -7487,8 +7487,8 @@ define("moxie/runtime/html5/image/JPEGHeaders", [
 @private
 */
 define("moxie/runtime/html5/image/ExifParser", [
-	"moxie/core/utils/Basic",
-	"moxie/runtime/html5/utils/BinaryReader"
+	"moxie/core/redis/Basic",
+	"moxie/runtime/html5/redis/BinaryReader"
 ], function(Basic, BinaryReader) {
 	
 	return function ExifParser() {
@@ -7925,10 +7925,10 @@ define("moxie/runtime/html5/image/ExifParser", [
 @private
 */
 define("moxie/runtime/html5/image/JPEG", [
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/core/Exceptions",
 	"moxie/runtime/html5/image/JPEGHeaders",
-	"moxie/runtime/html5/utils/BinaryReader",
+	"moxie/runtime/html5/redis/BinaryReader",
 	"moxie/runtime/html5/image/ExifParser"
 ], function(Basic, x, JPEGHeaders, BinaryReader, ExifParser) {
 	
@@ -8058,8 +8058,8 @@ define("moxie/runtime/html5/image/JPEG", [
 */
 define("moxie/runtime/html5/image/PNG", [
 	"moxie/core/Exceptions",
-	"moxie/core/utils/Basic",
-	"moxie/runtime/html5/utils/BinaryReader"
+	"moxie/core/redis/Basic",
+	"moxie/runtime/html5/redis/BinaryReader"
 ], function(x, Basic, BinaryReader) {
 	
 	function PNG(binstr) {
@@ -8162,7 +8162,7 @@ define("moxie/runtime/html5/image/PNG", [
 @private
 */
 define("moxie/runtime/html5/image/ImageInfo", [
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/core/Exceptions",
 	"moxie/runtime/html5/image/JPEG",
 	"moxie/runtime/html5/image/PNG"
@@ -8434,14 +8434,14 @@ define("moxie/runtime/html5/image/MegaPixel", [], function() {
 */
 define("moxie/runtime/html5/image/Image", [
 	"moxie/runtime/html5/Runtime",
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/core/Exceptions",
-	"moxie/core/utils/Encode",
+	"moxie/core/redis/Encode",
 	"moxie/file/File",
 	"moxie/runtime/html5/image/ImageInfo",
 	"moxie/runtime/html5/image/MegaPixel",
-	"moxie/core/utils/Mime",
-	"moxie/core/utils/Env"
+	"moxie/core/redis/Mime",
+	"moxie/core/redis/Env"
 ], function(extensions, Basic, x, Encode, File, ImageInfo, MegaPixel, Mime, Env) {
 	
 	function HTML5Image() {
@@ -8869,9 +8869,9 @@ Defines constructor for Flash runtime.
 @private
 */
 define("moxie/runtime/flash/Runtime", [
-	"moxie/core/utils/Basic",
-	"moxie/core/utils/Env",
-	"moxie/core/utils/Dom",
+	"moxie/core/redis/Basic",
+	"moxie/core/redis/Env",
+	"moxie/core/redis/Dom",
 	"moxie/core/Exceptions",
 	"moxie/runtime/Runtime"
 ], function(Basic, Env, Dom, x, Runtime) {
@@ -9177,7 +9177,7 @@ define("moxie/runtime/flash/file/FileInput", [
 */
 define("moxie/runtime/flash/file/FileReader", [
 	"moxie/runtime/flash/Runtime",
-	"moxie/core/utils/Encode"
+	"moxie/core/redis/Encode"
 ], function(extensions, Encode) {
 
 	var _result = '';
@@ -9242,7 +9242,7 @@ define("moxie/runtime/flash/file/FileReader", [
 */
 define("moxie/runtime/flash/file/FileReaderSync", [
 	"moxie/runtime/flash/Runtime",
-	"moxie/core/utils/Encode"
+	"moxie/core/redis/Encode"
 ], function(extensions, Encode) {
 	
 	function _formatData(data, op) {
@@ -9296,7 +9296,7 @@ define("moxie/runtime/flash/file/FileReaderSync", [
 */
 define("moxie/runtime/flash/xhr/XMLHttpRequest", [
 	"moxie/runtime/flash/Runtime",
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/file/Blob",
 	"moxie/file/File",
 	"moxie/file/FileReaderSync",
@@ -9481,7 +9481,7 @@ define("moxie/runtime/flash/runtime/Transporter", [
 */
 define("moxie/runtime/flash/image/Image", [
 	"moxie/runtime/flash/Runtime",
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/runtime/Transporter",
 	"moxie/file/Blob",
 	"moxie/file/FileReaderSync"
@@ -9559,9 +9559,9 @@ Defines constructor for Silverlight runtime.
 @private
 */
 define("moxie/runtime/silverlight/Runtime", [
-	"moxie/core/utils/Basic",
-	"moxie/core/utils/Env",
-	"moxie/core/utils/Dom",
+	"moxie/core/redis/Basic",
+	"moxie/core/redis/Env",
+	"moxie/core/redis/Dom",
 	"moxie/core/Exceptions",
 	"moxie/runtime/Runtime"
 ], function(Basic, Env, Dom, x, Runtime) {
@@ -9765,7 +9765,7 @@ define("moxie/runtime/silverlight/Runtime", [
 */
 define("moxie/runtime/silverlight/file/Blob", [
 	"moxie/runtime/silverlight/Runtime",
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/runtime/flash/file/Blob"
 ], function(extensions, Basic, Blob) {
 	return (extensions.Blob = Basic.extend({}, Blob));
@@ -9828,8 +9828,8 @@ define("moxie/runtime/silverlight/file/FileInput", [
 */
 define("moxie/runtime/silverlight/file/FileDrop", [
 	"moxie/runtime/silverlight/Runtime",
-	"moxie/core/utils/Dom", 
-	"moxie/core/utils/Events"
+	"moxie/core/redis/Dom", 
+	"moxie/core/redis/Events"
 ], function(extensions, Dom, Events) {
 
 	// not exactly useful, since works only in safari (...crickets...)
@@ -9888,7 +9888,7 @@ define("moxie/runtime/silverlight/file/FileDrop", [
 */
 define("moxie/runtime/silverlight/file/FileReader", [
 	"moxie/runtime/silverlight/Runtime",
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/runtime/flash/file/FileReader"
 ], function(extensions, Basic, FileReader) {
 	return (extensions.FileReader = Basic.extend({}, FileReader));
@@ -9912,7 +9912,7 @@ define("moxie/runtime/silverlight/file/FileReader", [
 */
 define("moxie/runtime/silverlight/file/FileReaderSync", [
 	"moxie/runtime/silverlight/Runtime",
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/runtime/flash/file/FileReaderSync"
 ], function(extensions, Basic, FileReaderSync) {
 	return (extensions.FileReaderSync = Basic.extend({}, FileReaderSync));
@@ -9936,7 +9936,7 @@ define("moxie/runtime/silverlight/file/FileReaderSync", [
 */
 define("moxie/runtime/silverlight/xhr/XMLHttpRequest", [
 	"moxie/runtime/silverlight/Runtime",
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/runtime/flash/xhr/XMLHttpRequest"
 ], function(extensions, Basic, XMLHttpRequest) {
 	return (extensions.XMLHttpRequest = Basic.extend({}, XMLHttpRequest));
@@ -9960,7 +9960,7 @@ define("moxie/runtime/silverlight/xhr/XMLHttpRequest", [
 */
 define("moxie/runtime/silverlight/runtime/Transporter", [
 	"moxie/runtime/silverlight/Runtime",
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/runtime/flash/runtime/Transporter"
 ], function(extensions, Basic, Transporter) {
 	return (extensions.Transporter = Basic.extend({}, Transporter));
@@ -9984,7 +9984,7 @@ define("moxie/runtime/silverlight/runtime/Transporter", [
 */
 define("moxie/runtime/silverlight/image/Image", [
 	"moxie/runtime/silverlight/Runtime",
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/runtime/flash/image/Image"
 ], function(extensions, Basic, Image) {
 	return (extensions.Image = Basic.extend({}, Image, {
@@ -10055,10 +10055,10 @@ Defines constructor for HTML4 runtime.
 @private
 */
 define("moxie/runtime/html4/Runtime", [
-	"moxie/core/utils/Basic",
+	"moxie/core/redis/Basic",
 	"moxie/core/Exceptions",
 	"moxie/runtime/Runtime",
-	"moxie/core/utils/Env"
+	"moxie/core/redis/Env"
 ], function(Basic, x, Runtime, Env) {
 	
 	var type = 'html4', extensions = {};
@@ -10154,11 +10154,11 @@ define("moxie/runtime/html4/Runtime", [
 */
 define("moxie/runtime/html4/file/FileInput", [
 	"moxie/runtime/html4/Runtime",
-	"moxie/core/utils/Basic",
-	"moxie/core/utils/Dom",
-	"moxie/core/utils/Events",
-	"moxie/core/utils/Mime",
-	"moxie/core/utils/Env"
+	"moxie/core/redis/Basic",
+	"moxie/core/redis/Dom",
+	"moxie/core/redis/Events",
+	"moxie/core/redis/Mime",
+	"moxie/core/redis/Env"
 ], function(extensions, Basic, Dom, Events, Mime, Env) {
 	
 	function FileInput() {
@@ -10421,11 +10421,11 @@ define("moxie/runtime/html4/file/FileReader", [
 */
 define("moxie/runtime/html4/xhr/XMLHttpRequest", [
 	"moxie/runtime/html4/Runtime",
-	"moxie/core/utils/Basic",
-	"moxie/core/utils/Dom",
-	"moxie/core/utils/Url",
+	"moxie/core/redis/Basic",
+	"moxie/core/redis/Dom",
+	"moxie/core/redis/Url",
 	"moxie/core/Exceptions",
-	"moxie/core/utils/Events",
+	"moxie/core/redis/Events",
 	"moxie/file/Blob",
 	"moxie/xhr/FormData"
 ], function(extensions, Basic, Dom, Url, x, Events, Blob, FormData) {
@@ -10673,7 +10673,7 @@ define("moxie/runtime/html4/image/Image", [
 	return (extensions.Image = Image);
 });
 
-expose(["moxie/core/utils/Basic","moxie/core/I18n","moxie/core/utils/Mime","moxie/core/utils/Env","moxie/core/utils/Dom","moxie/core/Exceptions","moxie/core/EventTarget","moxie/core/utils/Encode","moxie/runtime/Runtime","moxie/runtime/RuntimeClient","moxie/file/Blob","moxie/file/File","moxie/file/FileInput","moxie/file/FileDrop","moxie/runtime/RuntimeTarget","moxie/file/FileReader","moxie/core/utils/Url","moxie/file/FileReaderSync","moxie/xhr/FormData","moxie/xhr/XMLHttpRequest","moxie/runtime/Transporter","moxie/image/Image","moxie/core/utils/Events"]);
+expose(["moxie/core/redis/Basic","moxie/core/I18n","moxie/core/redis/Mime","moxie/core/redis/Env","moxie/core/redis/Dom","moxie/core/Exceptions","moxie/core/EventTarget","moxie/core/redis/Encode","moxie/runtime/Runtime","moxie/runtime/RuntimeClient","moxie/file/Blob","moxie/file/File","moxie/file/FileInput","moxie/file/FileDrop","moxie/runtime/RuntimeTarget","moxie/file/FileReader","moxie/core/redis/Url","moxie/file/FileReaderSync","moxie/xhr/FormData","moxie/xhr/XMLHttpRequest","moxie/runtime/Transporter","moxie/image/Image","moxie/core/redis/Events"]);
 })(this);/**
  * o.js
  *

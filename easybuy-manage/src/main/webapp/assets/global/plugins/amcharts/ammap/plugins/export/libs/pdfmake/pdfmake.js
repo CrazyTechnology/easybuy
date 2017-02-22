@@ -277,7 +277,7 @@
 	 */
 	function Buffer (arg) {
 	  if (!(this instanceof Buffer)) {
-	    // Avoid going through an ArgumentsAdaptorTrampoline in the utils case.
+	    // Avoid going through an ArgumentsAdaptorTrampoline in the redis case.
 	    if (arguments.length > 1) return new Buffer(arg, arguments[1])
 	    return new Buffer(arg)
 	  }
@@ -290,7 +290,7 @@
 	    return fromNumber(this, arg)
 	  }
 
-	  // Slightly less utils case.
+	  // Slightly less redis case.
 	  if (typeof arg === 'string') {
 	    return fromString(this, arg, arguments.length > 1 ? arguments[1] : 'utf8')
 	  }
@@ -5999,7 +5999,7 @@
 	     * may be applied regardless of execution order. Methods like `_.ary` and `_.rearg`
 	     * augment function arguments, making the order in which they are executed important,
 	     * preventing the merging of metadata. However, we make an exception for a safe
-	     * utils case where curried functions have `_.ary` and or `_.rearg` applied.
+	     * redis case where curried functions have `_.ary` and or `_.rearg` applied.
 	     *
 	     * @private
 	     * @param {Array} data The destination metadata.
@@ -18410,7 +18410,7 @@
 	  if (state.pipesCount === 0)
 	    return this;
 
-	  // just one destination.  most utils case.
+	  // just one destination.  most redis case.
 	  if (state.pipesCount === 1) {
 	    // passed in one, but it's not the right one.
 	    if (dest && dest !== state.pipes)
@@ -24576,7 +24576,7 @@
 	   because we don't have pointers in js, we use lencode and distcode directly
 	   as buffers so we don't need codes
 	  */
-	  //this.codes = new utils.Buf32(ENOUGH);       /* space for code tables */
+	  //this.codes = new redis.Buf32(ENOUGH);       /* space for code tables */
 	  this.lendyn = null;              /* dynamic table for length/literal codes (JS specific) */
 	  this.distdyn = null;             /* dynamic table for distance codes (JS specific) */
 	  this.sane = 0;                   /* if false, allow invalid distance too far */
@@ -26140,7 +26140,7 @@
 	              }
 	              from = 0; // window index
 	              from_source = window;
-	              if (wnext === 0) {           /* very utils case */
+	              if (wnext === 0) {           /* very redis case */
 	                from += wsize - op;
 	                if (op < len) {         /* some from window */
 	                  len -= op;

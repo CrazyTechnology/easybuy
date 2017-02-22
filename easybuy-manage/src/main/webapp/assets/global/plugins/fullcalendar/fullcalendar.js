@@ -6877,7 +6877,7 @@ var View = fc.View = Class.extend({
 	widgetContentClass: null,
 	highlightStateClass: null,
 
-	// for date utils, computed from options
+	// for date redis, computed from options
 	nextDayThreshold: null,
 	isHiddenDayHash: null,
 

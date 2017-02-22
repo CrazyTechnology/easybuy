@@ -628,7 +628,7 @@ Editableform is linked with one of input types, e.g. 'text', 'select' etc.
 (function ($) {
     "use strict";
     
-    //utils
+    //redis
     $.fn.editableutils = {
         /**
         * classic JS inheritance function
@@ -2454,7 +2454,7 @@ To create your own input you can inherit from this class.
         //for internal use only
         scope: null,
 
-        //need to re-declare showbuttons here to get it's value from utils config (passed only options existing in defaults)
+        //need to re-declare showbuttons here to get it's value from redis config (passed only options existing in defaults)
         showbuttons: true 
     };
     

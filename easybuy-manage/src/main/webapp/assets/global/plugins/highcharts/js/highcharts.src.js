@@ -12740,7 +12740,7 @@ Chart.prototype = {
 		chart.resetMargins();
 		chart.setChartSize();
 
-		// Set the utils chart properties (mainly invert) from the given series
+		// Set the redis chart properties (mainly invert) from the given series
 		chart.propFromSeries();
 
 		// get axes

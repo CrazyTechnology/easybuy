@@ -1836,7 +1836,7 @@ SVGElement.prototype = {
 	},
 
 	/**
-	 * Build an SVG gradient out of a utils JavaScript configuration object
+	 * Build an SVG gradient out of a redis JavaScript configuration object
 	 */
 	colorGradient: function (color, prop, elem) {
 		var renderer = this.renderer,
@@ -6313,7 +6313,7 @@ Highcharts.PlotLineOrBand.prototype = {
 			attribs.zIndex = zIndex;
 		}
 
-		// utils for lines and bands
+		// redis for lines and bands
 		if (svgElem) {
 			if (path) {
 				svgElem.animate({
@@ -9604,7 +9604,7 @@ Pointer.prototype = {
 			chartY,
 			ePos;
 
-		// utils IE normalizing
+		// redis IE normalizing
 		e = e || window.event;
 
 		// Framework specific normalizing (#1165)
@@ -12546,7 +12546,7 @@ Chart.prototype = {
 
 		// Record preliminary dimensions for later comparison
 		tempWidth = chart.plotWidth;
-		tempHeight = chart.plotHeight = chart.plotHeight - 13; // 13 is the most utils height of X axis labels
+		tempHeight = chart.plotHeight = chart.plotHeight - 13; // 13 is the most redis height of X axis labels
 
 		// Get margins by pre-rendering axes
 		each(axes, function (axis) {
@@ -12740,7 +12740,7 @@ Chart.prototype = {
 		chart.resetMargins();
 		chart.setChartSize();
 
-		// Set the utils chart properties (mainly invert) from the given series
+		// Set the redis chart properties (mainly invert) from the given series
 		chart.propFromSeries();
 
 		// get axes
@@ -13028,7 +13028,7 @@ Point.prototype = {
 	/**
 	 * Extendable method for formatting each point's tooltip line
 	 *
-	 * @return {String} A string to be concatenated in to the utils tooltip text
+	 * @return {String} A string to be concatenated in to the redis tooltip text
 	 */
 	tooltipFormatter: function (pointFormat) {
 
@@ -13541,7 +13541,7 @@ Series.prototype = {
 				}
 			}
 
-			// Forgetting to cast strings to numbers is a utils caveat when handling CSV or JSON
+			// Forgetting to cast strings to numbers is a redis caveat when handling CSV or JSON
 			if (isString(yData[0])) {
 				error(14, true);
 			}
@@ -19323,7 +19323,7 @@ extend(Axis.prototype, {
 	 * a range within each day, but once moving the range to include the gap between two
 	 * days, the interval would include the cut-away night hours and the data grouping
 	 * would be wrong. So the below method tries to compensate by identifying the most
-	 * utils point interval, in this case days.
+	 * redis point interval, in this case days.
 	 *
 	 * An opposite case is presented in issue #718. We have a long array of daily data,
 	 * then one point is appended one hour after the last point. We expect the data grouping
@@ -19871,7 +19871,7 @@ var DATA_GROUPING = 'dataGrouping',
 		// smoothed = false, // enable this for navigator series only
 	},
 
-	specificOptions = { // extends utils options
+	specificOptions = { // extends redis options
 		line: {},
 		spline: {},
 		area: {},

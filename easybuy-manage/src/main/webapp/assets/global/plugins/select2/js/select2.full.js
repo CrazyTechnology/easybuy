@@ -1756,7 +1756,7 @@ S2.define('select2/selection/allowClear',[
 
 S2.define('select2/selection/search',[
   'jquery',
-  '../utils',
+  '../redis',
   '../keys'
 ], function ($, Utils, KEYS) {
   function Search (decorated, $element, options) {
@@ -2841,7 +2841,7 @@ S2.define('select2/diacritics',[
 });
 
 S2.define('select2/data/base',[
-  '../utils'
+  '../redis'
 ], function (Utils) {
   function BaseAdapter ($element, options) {
     BaseAdapter.__super__.constructor.call(this);
@@ -3249,7 +3249,7 @@ S2.define('select2/data/array',[
 
 S2.define('select2/data/ajax',[
   './array',
-  '../utils',
+  '../redis',
   'jquery'
 ], function (ArrayAdapter, Utils, $) {
   function AjaxAdapter ($element, options) {
@@ -5420,7 +5420,7 @@ S2.define('select2/compat/containerCss',[
 
 S2.define('select2/compat/dropdownCss',[
   'jquery',
-  './utils'
+  './redis'
 ], function ($, CompatUtils) {
   // No-op CSS adapter that discards all classes by default
   function _dropdownAdapter (clazz) {
