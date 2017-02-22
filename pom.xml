@@ -12,6 +12,8 @@
         <module>easybuy-portal</module>
         <module>easybuy-rest</module>
         <module>easybuy-search</module>
+        <module>easybuy-order</module>
+        <module>easybuy-sso</module>
     </modules>
     <groupId>com.easybuy.ming</groupId>
     <artifactId>easybuy</artifactId>
