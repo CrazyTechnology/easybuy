@@ -331,7 +331,7 @@
         <i class="gw-left" style="background:url(./images/jd2015img.png)0 -58px no-repeat;width:24px;height:24px;"></i>
         <i class="gw-right">></i>
         <i class="gw-count">0</i>
-        <a href="shop.html">我的购物车</a>
+        <a href="/shoppingCart.do">我的购物车</a>
         <div class="dorpdown-layer">
             <img src="./images/settleup-nogoods.png">
             购物车中还没有商品，赶紧选购吧！

@@ -19,4 +19,11 @@ public class PageController {
         logger.info("下一步跳转到首页。。。");
         return new ModelAndView("index");
     }
+
+    //页面跳转到购物车
+    @RequestMapping("/shoppingCart.do")
+    public ModelAndView toShoppingCart() {
+        logger.info("下一步跳转到购物车。。。");
+        return new ModelAndView("shop");
+    }
 }
