@@ -81,7 +81,7 @@
             </li>
         </ul>
         <ul class="header-right">
-            <li class="denglu"><a href="#">您好，请登录</a> <a href="#" class="red">免费注册</a></li>
+            <li class="denglu"><a href="/login.do">您好，请登录</a> <a href="#" class="red">免费注册</a></li>
             <li class="shu"></li>
             <li class="denglu"><a href="#">我的订单</a></li>
             <li class="shu"></li>

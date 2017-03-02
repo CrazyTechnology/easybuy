@@ -26,4 +26,12 @@ public class PageController {
         logger.info("下一步跳转到购物车。。。");
         return new ModelAndView("shop");
     }
+
+    //页面跳转到登录页面
+    @RequestMapping("/login.do")
+    public ModelAndView toLogin() {
+        logger.info("下一步跳转到登录页面。。。");
+        return new ModelAndView("login");
+    }
+
 }
