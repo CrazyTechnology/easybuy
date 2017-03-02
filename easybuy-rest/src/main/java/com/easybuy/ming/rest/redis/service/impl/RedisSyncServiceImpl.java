@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * <p>Title: RedisSyncServiceImpl</p>
  * <p>Description: </p>
  * <p>Company: www.itcast.com</p> 
- * @author	入云龙
+ * @author	Mr_Li
  * @date	2015年8月21日下午3:56:46
  * @version 1.0
  */
