@@ -1,12 +1,11 @@
 package com.easybuy.ming.search.solr.service.impl;
 
+import com.easybuy.ming.pojo.SearchResult;
+import com.easybuy.ming.search.solr.service.SearchService;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.taotao.common.pojo.SearchResult;
-import com.taotao.search.dao.ItemDao;
-import com.taotao.search.service.SearchService;
 
 @Service
 public class SearchServiceImpl implements SearchService {

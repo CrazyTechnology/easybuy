@@ -3,16 +3,13 @@ package com.easybuy.ming.search.solr.service.impl;
 import java.io.IOException;
 import java.util.List;
 
+import com.easybuy.ming.search.solr.service.ItemService;
+import com.easybuy.ming.utils.EasybuyResult;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.taotao.common.pojo.SolrItem;
-import com.taotao.common.pojo.TaotaoResult;
-import com.taotao.search.mapper.ItemMapper;
-import com.taotao.search.service.ItemService;
 
 /**
  * 向索引库中导入商品信息
@@ -32,7 +29,7 @@ public class ItemServiceImpl implements ItemService {
 	private SolrServer solrServer;
 	
 	@Override
-	public TaotaoResult importAllItems() throws Exception {
+	public EasybuyResult importAllItems() throws Exception {
 		//查询商品列表
 		List<SolrItem> list = itemMapper.getItemList();
 		//向索引库中添加文档
