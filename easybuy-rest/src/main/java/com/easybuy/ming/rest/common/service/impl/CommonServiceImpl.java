@@ -26,8 +26,7 @@ public class CommonServiceImpl implements CommonService {
 
     @Resource
     private JedisClient jedisClient;
-    @Value("${REDIS_CONTENT_KEY}")
-    private String REDIS_CONTENT_KEY;
+
 
     /**
      * 查询所有省份列表
@@ -39,7 +38,7 @@ public class CommonServiceImpl implements CommonService {
         //查询数据库之前先查询缓存，如果有直接返回
         try {
             //从redis中取缓存数据
-            String json = jedisClient.hget(REDIS_CONTENT_KEY, city+"");
+            String json = jedisClient.hget("easybuy","city");
             if (!StringUtils.isBlank(json)) {
                 //把json转换成List
                 List<TbProvince> provinces = JsonUtils.jsonToList(json, TbProvince.class);
@@ -56,7 +55,7 @@ public class CommonServiceImpl implements CommonService {
             //为了规范key可以使用hash
             //定义一个保存内容的key，hash中每个项就是cid
             //value是list，需要把list转换成json数据。
-            jedisClient.hset(REDIS_CONTENT_KEY, city+"", JsonUtils.objectsToJson(provinces));
+            jedisClient.hset("easybuy", city+"", JsonUtils.objectsToJson(provinces));
         } catch (Exception e) {
             e.printStackTrace();
         }

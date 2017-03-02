@@ -22,12 +22,11 @@ public class RedisSyncServiceImpl implements RedisSyncService {
 	@Autowired
 	private JedisClient jedisClient;
 	
-	@Value("${REDIS_CONTENT_KEY}")
-	private String REDIS_CONTENT_KEY;
-	
+
+
 	public EasybuyResult syncContent(String key) {
-		jedisClient.hdel(REDIS_CONTENT_KEY, key);
-		
+		jedisClient.hdel("easybuy", key);
+
 		return EasybuyResult.ok();
 	}
 
