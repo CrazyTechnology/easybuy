@@ -23,33 +23,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ItemServiceImpl implements ItemService {
 
-	@Autowired
-	private ItemMapper itemMapper;
-	@Autowired
-	private SolrServer solrServer;
-	
-	@Override
-	public EasybuyResult importAllItems() throws Exception {
-		//查询商品列表
-		List<SolrItem> list = itemMapper.getItemList();
-		//向索引库中添加文档
-		for (SolrItem solrItem : list) {
-			//创建文档对象
-			SolrInputDocument document = new SolrInputDocument();
-			document.setField("id", solrItem.getId());
-			document.setField("item_title", solrItem.getTitle());
-			document.setField("item_sell_point", solrItem.getSell_point());
-			document.setField("item_price", solrItem.getPrice());
-			document.setField("item_image", solrItem.getImage());
-			document.setField("item_category_name", solrItem.getItem_cat_name());
-			document.setField("item_desc", solrItem.getItem_desc());
-			//向索引库中添加文档
-			solrServer.add(document);
-		}
-		//提交修改
-		solrServer.commit();
-		
-		return TaotaoResult.ok();
-	}
+
 
 }
