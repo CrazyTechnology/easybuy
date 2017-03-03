@@ -7,6 +7,7 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
     <title>注册-个人用户</title>
+	<link rel="icon" href="//www.jd.com/favicon.ico"/>
     <link type="text/css" rel="stylesheet" href="/css/regist.personal.css"/>
     <link type="text/css" rel="stylesheet" href="/css/passport.base.css"/>
     <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
@@ -14,8 +15,8 @@
 <body>
 <div class="w" id="logo">
     <div>
-    	<a href="http://localhost:8082">
-    		<img src="/images/taotao-logo.gif" alt="淘淘商城" width="170" height="60"/>
+    	<a href="http://localhost:8081/index.do">
+    		<img src="//misc.360buyimg.com/lib/img/e/logo-201305-b.png" alt="京东商城" width="170" height="60"/>
     	</a> <b></b>
     </div>
 </div>
@@ -27,7 +28,7 @@
         </ul>
         <div class="extra">
         <span>我已经注册，现在就&nbsp;
-        	<a href="/user/showLogin" class="flk13">登录</a>
+        	<a href="/login.do" class="flk13">登录</a>
         </span>
         </div>
     </div>
@@ -95,7 +96,7 @@
                     <div class="fl item-ifo">
                         <input type="checkbox" class="checkbox" checked="checked" id="readme"
                                onclick="agreeonProtocol();">
-                        <label for="protocol">我已阅读并同意<a href="#" class="blue" id="protocol">《淘淘用户注册协议》</a></label>
+                        <label for="protocol">我已阅读并同意<a href="#" class="blue" id="protocol">《京东用户注册协议》</a></label>
                         <span class="clr"></span>
                         <label id="protocol_error" class="error hide">请接受服务条款</label>
                     </div>
@@ -113,6 +114,9 @@
             <span class="clr"></span>
         </form>
     </div>
+	<div id="footer-2013">
+		<div class="links"><a href="http://www.jd.com/intro/about.aspx" target="_blank" rel="nofollow">关于我们</a>|<a href="http://www.jd.com/contact/" target="_blank" rel="nofollow">联系我们</a>|<a href="http://zhaopin.jd.com/" target="_blank" rel="nofollow">人才招聘</a>|<a href="http://www.jd.com/contact/joinin.aspx" target="_blank" rel="nofollow">商家入驻</a>|<a href="http://jzt.jd.com" target="_blank" rel="nofollow">营销中心</a>|<a href="http://app.jd.com/" target="_blank" rel="nofollow">手机京东</a>|<a href="http://club.jd.com/links.aspx" target="_blank">友情链接</a>|<a href="http://media.jd.com/" target="_blank">销售联盟</a>|<a target="_blank" href="http://club.jd.com/">京东社区</a>|<a target="_blank" href="http://gongyi.jd.com">京东公益</a>|<a target="_blank" href="http://en.jd.com/">English Site</a></div>
+	</div>
 <script type="text/javascript">
 	var REGISTER={
 		param:{
