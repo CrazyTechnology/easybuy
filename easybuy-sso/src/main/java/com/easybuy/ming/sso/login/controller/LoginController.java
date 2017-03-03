@@ -37,7 +37,7 @@ public class LoginController {
     }
 
 
-    @RequestMapping(value="/user/login", method= RequestMethod.POST)
+    @RequestMapping(value="/login", method= RequestMethod.POST)
     @ResponseBody
     public EasybuyResult login(String username, String password,
                                HttpServletRequest request, HttpServletResponse response) {

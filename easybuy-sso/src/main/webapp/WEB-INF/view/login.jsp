@@ -79,16 +79,16 @@
             return true;
         },
         doLogin:function() {
-            $.post("/user/login", $("#formlogin").serialize(),function(data){
+            $.post("/sso/login.do", $("#formlogin").serialize(),function(data){
                 if (data.status == 200) {
                     alert("登录成功！");
                     if (redirectUrl == "") {
-                        location.href = "http://localhost:8082";
+                        location.href = "http://localhost:8081/index.do";
                     } else {
                         location.href = redirectUrl;
                     }
                 } else {
-                    alert("登录失败，原因是：" + data.msg);
+                    alert(data.msg);
                     $("#loginname").select();
                 }
             });

@@ -28,7 +28,7 @@
         </ul>
         <div class="extra">
         <span>我已经注册，现在就&nbsp;
-        	<a href="/login.do" class="flk13">登录</a>
+        	<a href="/sso/toLogin.do" class="flk13">登录</a>
         </span>
         </div>
     </div>

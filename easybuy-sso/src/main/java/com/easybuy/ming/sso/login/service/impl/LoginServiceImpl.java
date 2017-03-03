@@ -41,7 +41,7 @@ public class LoginServiceImpl implements LoginService {
 
         //有效性验证
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
-            return EasybuyResult.build(400, "有户名和密码不能为空");
+            return EasybuyResult.build(400, "用户名和密码不能为空");
         }
         TbUserExample example = new TbUserExample();
         TbUserExample.Criteria criteria = example.createCriteria();
