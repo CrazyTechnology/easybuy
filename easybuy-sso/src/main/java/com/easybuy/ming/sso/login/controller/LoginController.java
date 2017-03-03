@@ -2,6 +2,7 @@ package com.easybuy.ming.sso.login.controller;
 
 import com.easybuy.ming.sso.login.service.LoginService;
 import com.easybuy.ming.utils.EasybuyResult;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,16 +20,21 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("/sso")
 public class LoginController {
-
+    Logger logger = Logger.getLogger(LoginController.class);
     @Autowired
     private LoginService loginService;
 
     @RequestMapping("/toLogin.do")
     public ModelAndView toLogin(){
+        logger.info("跳转到登录首页。。。");
         return new ModelAndView("login");
     }
 
-
+    @RequestMapping("/toRegister.do")
+    public ModelAndView toRegister(){
+        logger.info("跳转到注册页面。。。");
+        return new ModelAndView("register");
+    }
 
 
     @RequestMapping(value="/user/login", method= RequestMethod.POST)

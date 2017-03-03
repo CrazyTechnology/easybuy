@@ -60,7 +60,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>easybuy-sso</servlet-name>
-    <url-pattern>/sso/*</url-pattern>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
 
 </web-app>
