@@ -68,4 +68,9 @@ public class LoginServiceImpl implements LoginService {
         //返回token
         return EasybuyResult.ok(token);
     }
+
+    public EasybuyResult getLoginInfo(String token, HttpServletRequest request, HttpServletResponse response) {
+        String value = jedisClient.get(REDIS_SESSION_KEY+":"+token);
+        return EasybuyResult.ok(value);
+    }
 }

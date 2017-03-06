@@ -37,12 +37,11 @@ public class LoginController {
     }
 
 
-    @RequestMapping(value="/login", method= RequestMethod.POST)
+    @RequestMapping(value="/getLoginInfo.do", method= RequestMethod.POST)
     @ResponseBody
-    public EasybuyResult login(String username, String password,
-                               HttpServletRequest request, HttpServletResponse response) {
-        EasybuyResult result = loginService.login(username, password, request, response);
-        return result;
+    public String login(String token,  HttpServletRequest request, HttpServletResponse response) {
+        EasybuyResult result = loginService.getLoginInfo(token,request, response);
+        return result.getData()+"";
     }
 
     @RequestMapping("/user/page/login")

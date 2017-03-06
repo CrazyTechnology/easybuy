@@ -10,4 +10,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface LoginService {
     EasybuyResult login(String username, String password, HttpServletRequest request, HttpServletResponse response);
+
+    EasybuyResult getLoginInfo(String token, HttpServletRequest request, HttpServletResponse response);
 }
