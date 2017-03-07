@@ -14,6 +14,12 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	<!-- 包扫描器，扫描@Controller注解 -->
-	<context:component-scan base-package="com.easybuy.ming.sso.*.controller"/>
-
+	<context:component-scan base-package="com.easybuy.ming.cart.*.controller"/>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*.do"/>
+			<bean class="com.easybuy.ming.cart.interceptor.CartInterceptor">
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>
