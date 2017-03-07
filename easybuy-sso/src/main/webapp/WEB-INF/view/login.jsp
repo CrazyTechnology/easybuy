@@ -82,11 +82,12 @@
             $.post("/sso/login.do", $("#formlogin").serialize(),function(data){
                 if (data.status == 200) {
                     alert("登录成功！");
-                    if (redirectUrl == "") {
-                        location.href = "http://localhost:8081/index.do";
-                    } else {
-                        location.href = redirectUrl;
-                    }
+                    location.href = "http://localhost:8081/index.do";
+//                    if (redirectUrl == "") {
+//
+//                    } else {
+//                        location.href = redirectUrl;
+//                    }
                 } else {
                     alert(data.msg);
                     $("#loginname").select();

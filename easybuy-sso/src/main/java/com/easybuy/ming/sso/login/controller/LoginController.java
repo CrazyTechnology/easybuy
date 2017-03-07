@@ -30,6 +30,19 @@ public class LoginController {
         return new ModelAndView("login");
     }
 
+    /**
+     * 登录功能
+     * @param username 用户名
+     * @param password 密码
+     * @return
+     */
+    @RequestMapping("/login.do")
+    @ResponseBody
+    public EasybuyResult login(HttpServletRequest request,HttpServletResponse response,String username,String password){
+        EasybuyResult result = loginService.login(username,password,request,response);
+        return result;
+    }
+
     @RequestMapping("/toRegister.do")
     public ModelAndView toRegister(){
         logger.info("跳转到注册页面。。。");
