@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <!doctype html>
 <html>
@@ -81,7 +82,14 @@
             </li>
         </ul>
         <ul class="header-right">
-            <li class="denglu"><a href="http://localhost:8083/sso/toLogin.do">您好，请登录</a> <a href="#" class="red">免费注册</a></li>
+            <c:if test="${empty loginUser.username}">
+                <li class="denglu"><a href="http://localhost:8083/sso/toLogin.do">您好，请登录</a>
+                    <a href="#" class="red">免费注册</a></li>
+            </c:if>
+            <c:if test="${not empty loginUser.username}">
+                <li class="fore1 dorpdown icon-plus-state2" id="ttbar-login" clstag="h|keycount|2016|01b"><div class="dt cw-icon">        <i class="icon-plus-nickname"></i>        <i class="ci-right"><s>◇</s></i>        <a class="nickname" target="_blank" href="//home.jd.com/">${loginUser.username}</a>        <i class="iconfont"></i>      </div>      <div class="dd dorpdown-layer"><div class="dd-spacer"></div>        <div class="userinfo">          <div class="u-pic">            <a target="_blank" href="//home.jd.com/">              <img class="J_upic_img" src="//i.jd.com/commons/img/no-img_mid_.jpg" width="60" height="60">            </a>          </div>          <div class="u-plus">            <a href="https://passport.jd.com/uc/login?ltype=logout" class="link-logout">退出</a>            <a href="https://plus.jd.com/index" target="_blank" class="icon-plus-dropdown"></a>          </div>          <div class="u-msg"><a href="https://plus.jd.com/index" target="_blank">购买PLUS会员尊享顶级特权&gt;</a></div>        </div><div class="badge-list J_sliderwrap">        <a href="javascript:void(0);" class="badge-list-prev J_slider_btnp"><i class="iconfont"></i></a>        <div class="u-badges J_slider_ctn">          <div class="badge-panel-main J_slider_con">            <div class="badge-panel fore1 u-dis ">              <a href="https://plus.jd.com/index" target="_blank">                <i class="icobadage icobadage_plus"></i>                <p class="u-name">开通正式版</p>              </a>            </div><div class="badge-panel badge-panel_long"><a href="//vip.jd.com/help.html#mypri-01" target="_blank"><i class="icobadage icobadage_zymyf"></i><p class="u-name">自营运费补贴</p></a></div><div class="badge-panel"><a href="//vip.jd.com/help.html#mypri-02" target="_blank"><i class="icobadage icobadage_shfw"></i><p class="u-name">售后服务</p></a></div><div class="badge-panel"><a href="//vip.jd.com/help.html#mypri-03" target="_blank"><i class="icobadage icobadage_pjjl"></i><p class="u-name">评价奖励</p></a></div><div class="badge-panel"><a href="//vip.jd.com/help.html#mypri-04" target="_blank"><i class="icobadage icobadage_hytj"></i><p class="u-name">会员特价</p></a></div><div class="badge-panel"><a href="//vip.jd.com/help.html#mypri-05" target="_blank"><i class="icobadage icobadage_srlb"></i><p class="u-name">生日礼包</p></a></div><div class="badge-panel"><a href="//vip.jd.com/help.html#mypri-06" target="_blank"><i class="icobadage icobadage_zjfw"></i><p class="u-name">装机服务</p></a></div><div class="badge-panel u-dis"><a href="//vip.jd.com/help.html#mypri-07" target="_blank"><i class="icobadage icobadage_zxlb"></i><p class="u-name">专享礼包</p></a></div><div class="badge-panel u-dis"><a href="//vip.jd.com/help.html#mypri-08" target="_blank"><i class="icobadage icobadage_gbzx"></i><p class="u-name">贵宾专线</p></a></div><div class="badge-panel u-dis"><a href="//vip.jd.com/help.html#mypri-09" target="_blank"><i class="icobadage icobadage_yfq"></i><p class="u-name">运费券</p></a></div></div>        </div>        <a href="javascript:void(0);" class="badge-list-next J_slider_btnn"><i class="iconfont"></i></a>      </div></div></li>
+            </c:if>
+
             <li class="shu"></li>
             <li class="denglu"><a href="#">我的订单</a></li>
             <li class="shu"></li>
