@@ -4364,12 +4364,12 @@
 
         $.ajax({
             dataType: "jsonp",//跨域访问 dataType 必须是jsonp 类型。
-            url:"http://localhost:8082/rest/item/cat/list?callback=?",
+            url:"http://localhost:8082/rest/item/cat/list",
             type:"GET",
             jsonp:"callbackparam",
             jsonpCallback:"success",
             success: function(response) {
-               alert(response.);
+               alert(response.length);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 alert("status"+XMLHttpRequest.status);
