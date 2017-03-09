@@ -4359,6 +4359,25 @@
                 alert(errorThrown);
             }
         });
+
+
+
+        $.ajax({
+            dataType: "jsonp",//跨域访问 dataType 必须是jsonp 类型。
+            url:"http://localhost:8082/rest/item/cat/list?callback=?",
+            type:"GET",
+            jsonp:"callbackparam",
+            jsonpCallback:"success",
+            success: function(response) {
+               alert(response.);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert("status"+XMLHttpRequest.status);
+                alert("readyState"+XMLHttpRequest.readyState);
+                alert("textstatus"+textStatus);
+                alert(errorThrown);
+            }
+        });
     });
 
     function searchSolr(){
