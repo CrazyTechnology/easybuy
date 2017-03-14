@@ -20,18 +20,17 @@ public class ItemController {
     @Autowired
     private ItemService itemCatService;
 
-    @RequestMapping(value="/list",produces= MediaType.APPLICATION_JSON_VALUE+";charset=utf-8")
+    @RequestMapping(value="/cat/list",produces= MediaType.APPLICATION_JSON_VALUE+";charset=utf-8")
     @ResponseBody
     public String getItemCatList(String callback) {
         ItemCatResult result = itemCatService.getItemCatList();
+        String json = JsonUtils.object2json(result);
         if (StringUtils.isBlank(callback)) {
             //需要把result转换成字符串
-            String json = JsonUtils.objectsToJson(result);
             return json;
         }
         //如果字符串不为空，需要支持jsonp调用
         //需要把result转换成字符串
-        String json = JsonUtils.objectsToJson(result);
         return callback + "(" + json + ");";
     }
 
