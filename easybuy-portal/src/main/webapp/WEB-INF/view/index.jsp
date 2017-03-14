@@ -71,7 +71,7 @@
 <!--*****************顶端*****************-->
 <header id="header">
     <div class="header-box">
-        <ul class="header-left">
+        <ul class="header-left" id="city-list">
             <li class="bj">
                 送至：北京
                 <i class="ci-leftll">
@@ -4341,16 +4341,19 @@
     $(function () {
         $.ajax({
             dataType: "jsonp",//跨域访问 dataType 必须是jsonp 类型。
-            url:"http://localhost:8082/rest/common/getCity?callback=?",
+            url:"http://localhost:8082/rest/item/cat/list?callback=?",
             type:"GET",
             jsonp:"callbackparam",
             jsonpCallback:"success",
             success: function(response) {
-                for(var i=0;i<response.length;i++){
-                    var name=response[i].province;
-                    var html="<a href='javascript:void(0);'>"+name+"</a>"
-                    $("#city").append(html);
+                var cat=response.data; //目录数组
+                var cat_html="";
+                for(var i=0;i<cat.length;i++){
+                            if(i==0){
+                                cat_html="<div class='font-item'>";
+                            }
                 }
+
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 alert("status"+XMLHttpRequest.status);
@@ -4359,25 +4362,34 @@
                 alert(errorThrown);
             }
         });
+    });
 
-
-
-        $.ajax({
-            dataType: "jsonp",//跨域访问 dataType 必须是jsonp 类型。
-            url:"http://localhost:8082/rest/item/cat/list",
-            type:"GET",
-            jsonp:"callbackparam",
-            jsonpCallback:"success",
-            success: function(response) {
-               alert(response.length);
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert("status"+XMLHttpRequest.status);
-                alert("readyState"+XMLHttpRequest.readyState);
-                alert("textstatus"+textStatus);
-                alert(errorThrown);
-            }
-        });
+    //当鼠标经过时触发地址，并且触发一次
+    var city_trigger_time=0;
+    $("#city-list").mouseover(function(){
+        if(city_trigger_time<1){
+            $.ajax({
+                dataType: "jsonp",//跨域访问 dataType 必须是jsonp 类型。
+                url:"http://localhost:8082/rest/common/getCity?callback=?",
+                type:"GET",
+                jsonp:"callbackparam",
+                jsonpCallback:"success",
+                success: function(response) {
+                    for(var i=0;i<response.length;i++){
+                        var name=response[i].province;
+                        var html="<a href='javascript:void(0);'>"+name+"</a>"
+                        $("#city").append(html);
+                    }
+                    city_trigger_time++;
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("status"+XMLHttpRequest.status);
+                    alert("readyState"+XMLHttpRequest.readyState);
+                    alert("textstatus"+textStatus);
+                    alert(errorThrown);
+                }
+            });
+        }
     });
 
     function searchSolr(){
