@@ -4347,11 +4347,33 @@
             jsonpCallback:"success",
             success: function(response) {
                 var cat=response.data; //目录数组
-                var cat_html="";
+                console.info(response);
                 for(var i=0;i<cat.length;i++){
+                    var cat_html="";
                             if(i==0){
-                                cat_html="<div class='font-item'>";
+                                cat_html="<div class='font-item'>"+
+                                               "<div class='item fore1'>"+
+                                               "<h3><a href=''>cat[i].name</a></h3>"+
+                                               " <i>&gt;</i>"+
+                                               "</div>"+
+                                               "<div class='font-item1'>"+
+                                               "<div class='font-left'>"+
+                                               "<div class='one'><a href=''>品牌日<i>&gt;</i></a></div>"+
+                                               "</div>"+
+                                               " <div class='font-lefty'>"+
+                                                "<dl class='fore1'>";
+                                               for(var j=0;j<cat[i].items.length;j++){
+                                                   cat_html=cat_html+"<dt><a href=''>cat[i].items[j].name<i>&gt;</i></a></dt>"+
+                                                                   "<dd>"+
+                                                                   ""+cat[i].items[j].items+""+
+                                                           "</dd>";
+                                               }
+
+
+                            }else{
+
                             }
+                            alert(cat_html);
                 }
 
             },
