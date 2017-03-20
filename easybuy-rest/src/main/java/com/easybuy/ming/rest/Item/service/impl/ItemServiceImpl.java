@@ -1,5 +1,6 @@
 package com.easybuy.ming.rest.Item.service.impl;
 
+import com.alibaba.druid.support.json.JSONUtils;
 import com.easybuy.ming.mapper.TbItemCatMapper;
 import com.easybuy.ming.pojo.TbItemCat;
 import com.easybuy.ming.pojo.TbItemCatExample;
@@ -17,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Administrator on 2017-02-16.
@@ -30,7 +33,7 @@ public class ItemServiceImpl implements ItemService {
     @Resource
     private JedisClient jedisClient;
 
-    @Value("${REDIS_EASYBUY_CAT_KEY=EASYBUY_CAT}")
+    @Value("${REDIS_EASYBUY_CAT_KEY}")
     private String REDIS_EASYBUY_CAT_KEY;
 
     public ItemCatResult getItemCatList() {
@@ -42,8 +45,10 @@ public class ItemServiceImpl implements ItemService {
             String json = jedisClient.hget(REDIS_EASYBUY_CAT_KEY,"cat");
             if (!StringUtils.isBlank(json)) {
                 //把json转换成List
-
-               // return provinces;
+                List<Map> catList = JsonUtils.jsonToList(json, Map.class);
+                ItemCatResult result = new ItemCatResult();
+                result.setData(catList);
+                // return provinces;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,6 +59,14 @@ public class ItemServiceImpl implements ItemService {
         //返回结果
         ItemCatResult result = new ItemCatResult();
         result.setData(catList);
+        try {
+            //为了规范key可以使用hash
+            //定义一个保存内容的key，hash中每个项就是cid
+            //value是list，需要把list转换成json数据。
+            jedisClient.hset(REDIS_EASYBUY_CAT_KEY, cat, JsonUtils.list2json(catList));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return result;
     }
 
