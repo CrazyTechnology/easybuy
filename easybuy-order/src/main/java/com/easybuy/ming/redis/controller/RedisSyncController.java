@@ -1,6 +1,6 @@
 package com.easybuy.ming.redis.controller;
 
-import com.easybuy.ming.rest.redis.service.RedisSyncService;
+import com.easybuy.ming.redis.service.RedisSyncService;
 import com.easybuy.ming.utils.EasybuyResult;
 import com.easybuy.ming.utils.ExceptionUtil;
 import org.springframework.beans.factory.annotation.Autowired;

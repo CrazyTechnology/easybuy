@@ -1,7 +1,8 @@
 package com.easybuy.ming.redis.service.impl;
 
-import com.easybuy.ming.rest.redis.service.JedisClient;
-import com.easybuy.ming.rest.redis.service.RedisSyncService;
+
+import com.easybuy.ming.redis.service.JedisClient;
+import com.easybuy.ming.redis.service.RedisSyncService;
 import com.easybuy.ming.utils.EasybuyResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
