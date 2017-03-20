@@ -8,7 +8,9 @@ import com.easybuy.ming.pojo.TbItemExample;
 import com.easybuy.ming.utils.PageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -19,9 +21,11 @@ import java.util.Map;
 @Service
 public class CommodityServiceImpl implements CommodityService {
 
+    @Resource
     private TbItemMapper tbItemMapper;
 
     //查询商品列表
+    @RequestMapping("/list.do")
     public DatatablesPager selectCommodityList(DatatablesPager datatablesPager) {
         PageHelper.startPage(datatablesPager);
         List<TbItem> userList = tbItemMapper.selectByExample(new TbItemExample());

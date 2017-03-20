@@ -5,6 +5,7 @@ import com.easybuy.ming.pojo.DatatablesPager;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -25,6 +26,7 @@ public class CommodityController {
     }
 
     @RequestMapping("/list.do")
+    @ResponseBody
     public DatatablesPager getCommodityList(DatatablesPager datatablesPager){
         logger.info("进入查询商品列表的操作");
       return   commodityService.selectCommodityList(datatablesPager);
