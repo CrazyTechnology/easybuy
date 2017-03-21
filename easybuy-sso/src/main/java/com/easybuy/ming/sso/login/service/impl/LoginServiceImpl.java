@@ -37,6 +37,14 @@ public class LoginServiceImpl implements LoginService {
 
     private static String EASYBUY_TOKEN="EASYBUY_TOKEN";
 
+    /**
+     * 用户登录
+     * @param username 用户名
+     * @param password 密码
+     * @param request
+     * @param response
+     * @return
+     */
     public EasybuyResult login(String username, String password, HttpServletRequest request, HttpServletResponse response) {
 
         //有效性验证
@@ -79,5 +87,48 @@ public class LoginServiceImpl implements LoginService {
     public EasybuyResult getLoginInfo(String token, HttpServletRequest request, HttpServletResponse response) {
         String value = jedisClient.get(REDIS_SESSION_KEY+":"+token);
         return EasybuyResult.ok(value);
+    }
+
+    /**
+     * 退出登录
+     * @param token 用户标示
+     * @param request
+     * @param response
+     * @return
+     */
+    public EasybuyResult logout(String token, HttpServletRequest request, HttpServletResponse response) {
+        Long del = jedisClient.del(REDIS_SESSION_KEY + ":" + token);
+        if(del>1){
+            return  EasybuyResult.ok("退出成功");
+        }else{
+            return  EasybuyResult.ok("退出失败");
+        }
+    }
+
+    /**
+     * 检查数据是否可用
+     * @param user
+     * @return
+     */
+    public List<TbUser> check(TbUser user) {
+        TbUserExample example=new TbUserExample();
+        TbUserExample.Criteria criteria = example.createCriteria();
+        criteria.andUsernameEqualTo(user.getUsername());
+        List<TbUser> tbUsers = userMapper.selectByExample(example);
+        return tbUsers;
+    }
+
+    /**
+     * 注册新的用户
+     * @param user
+     * @return
+     */
+    public EasybuyResult saveNewUser(TbUser user) {
+        int result = userMapper.insertSelective(user);
+        if(result>0){
+            return  EasybuyResult.ok("注册成功");
+        }else{
+            return EasybuyResult.build(400,"注册失败，请校验数据后再提交数据",null);
+        }
     }
 }
