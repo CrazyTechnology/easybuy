@@ -7,11 +7,11 @@
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="/user/toUserPage.do" class="ajaxify">会员管理</a>
+            <a href="/commodity/toList.do" class="ajaxify">商品管理</a>
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <span>会员新增</span>
+            <span>商品新增</span>
         </li>
     </ul>
 </div>
@@ -19,7 +19,7 @@
     <div class="portlet-title">
         <div class="caption">
             <i class="icon-equalizer font-red-sunglo"></i>
-            <span class="caption-subject font-red-sunglo bold uppercase">会员新增</span>
+            <span class="caption-subject font-red-sunglo bold uppercase">商品新增</span>
         </div>
     </div>
     <div class="portlet-body form">
@@ -28,64 +28,48 @@
             <input type="hidden" name="photo" id="photo_url">
             <div class="form-body">
                 <div class="form-group">
-                    <label class="control-label col-md-3">用户姓名
+                    <label class="control-label col-md-3">商品标题
                         <span class="required" aria-required="true"> * </span>
                     </label>
                     <div class="col-md-4">
-                        <input type="text" name="name" data-required="1" placeholder="请输入用户姓名" class="form-control"> </div>
+                        <input type="text" name="title" data-required="1" placeholder="请输入商品标题" class="form-control"> </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-3">手机号
+                    <label class="control-label col-md-3">商品卖点
                         <span class="required" aria-required="true"> * </span>
                     </label>
                     <div class="col-md-4">
-                        <input type="text" name="phone" data-required="1" placeholder="请输入手机号" class="form-control"> </div>
+                        <input type="text" name="sellPoint" data-required="1" placeholder="请输入商品卖点" class="form-control"> </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">邮箱</label>
+                    <label class="col-md-3 control-label">商品价格</label>
                     <div class="col-md-4">
-                        <div class="input-group">
-                             <span class="input-group-addon">
-                                <i class="fa fa-envelope"></i>
-                             </span>
-                            <input type="text" name="email" class="form-control" placeholder="请输入邮箱"> </div>
+
+                            <input type="text" name="price" class="form-control" placeholder="请输入商品价格">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-3">生日</label>
+                    <label class="control-label col-md-3">库存数量</label>
                     <div class="col-md-4">
-                        <div class="input-group date date-picker" id="time" data-date-format="yyyy-mm-dd">
-                            <input type="text" class="form-control" id="birthday"  name="birthday" readonly>
-                            <span class="input-group-btn">
-                                <button class="btn default" type="button">
-                                    <i class="fa fa-calendar"></i>
-                                </button>
-                            </span>
-                        </div>
+                            <input type="text" class="form-control" id="num"  name="num">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-3">居住地址
+                    <label class="control-label col-md-3">商品条形码
                         <span class="required"> *</span>
                     </label>
                     <div class="col-md-4">
-                        <select class="form-control select2" name="address">
-                        </select>
+                      <input type="text" name="barcode" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label">密码</label>
+                    <label class="col-md-3 control-label">商品状态</label>
                     <div class="col-md-4">
-                        <div class="input-group">
-                            <input type="password" name="password" class="form-control" placeholder="请输入密码">
-                            <span class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </span>
-                        </div>
+                        <input type="text" name="password" class="form-control" placeholder="请输入商品状态">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-3">上传头像</label>
+                    <label class="control-label col-md-3">商品图片</label>
                     <div class="col-md-4">
                         <input type="file"  class="file-loading" name="photo"  id="photo">
                     </div>
