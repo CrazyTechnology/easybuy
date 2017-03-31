@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-md-1">
                             <div class="btn-group">
-                                <a  class="btn sbold green ajaxify" href="/user/toUserAddPage.do"> 新增
+                                <a  class="btn sbold green ajaxify" href="/commodity/toCommodityAdd.do"> 新增
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>

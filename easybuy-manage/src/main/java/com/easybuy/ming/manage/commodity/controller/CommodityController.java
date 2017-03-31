@@ -25,6 +25,11 @@ public class CommodityController {
         return new ModelAndView("/commodity/commodityList");
     }
 
+    @RequestMapping("/toCommodityAdd.do")
+    public ModelAndView toCommodityAddPage(){
+        return new ModelAndView("/commodity/commodityAdd");
+    }
+
     @RequestMapping("/list.do")
     @ResponseBody
     public DatatablesPager getCommodityList(DatatablesPager datatablesPager){
