@@ -75,7 +75,7 @@
             <li class="bj">
                 送至：北京
                 <i class="ci-leftll">
-                    <s class="jt">◇</s>
+                    <s class="jt"></s>
                 </i>
                 <div class="bj-1" id="city">
                 </div>
