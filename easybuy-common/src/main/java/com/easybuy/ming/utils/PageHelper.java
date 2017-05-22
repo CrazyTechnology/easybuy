@@ -1,4 +1,27 @@
-package com.easybuy.ming.utils;
+package com.easybuy.ming.utils;/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2014 abel533@gmail.com
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -6,10 +29,10 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
+
 import javax.sql.DataSource;
 
 import com.easybuy.ming.pojo.DatatablesPager;
-import com.github.pagehelper.*;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.plugin.Interceptor;
@@ -19,6 +42,14 @@ import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
+
+import com.github.pagehelper.Dialect;
+import com.github.pagehelper.ISelect;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.SqlUtil;
+import com.github.pagehelper.SqlUtilConfig;
+import com.github.pagehelper.StringUtil;
 
 /**
  * Mybatis - 通用分页拦截器
@@ -105,6 +136,7 @@ public class PageHelper implements Interceptor {
             length=datatablesPager.getDisplayLength();
 
         startPage((start/length)+1, length);
+        //	localPage.set(datatablesPager);
     }
     /**
      * 开始分页
@@ -287,7 +319,8 @@ public class PageHelper implements Interceptor {
             if(datatablesPager!=null){
                 datatablesPager.setData(result);
             }
-            return sqlUtil.processPage(invocation);
+            return result;
+//            return sqlUtil.processPage(invocation);
         }
     }
 
