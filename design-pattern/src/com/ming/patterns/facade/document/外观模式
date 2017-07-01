@@ -33,6 +33,8 @@
 4.调用示意图
 
 client--调用--->facade{包含ModuleA,MoudleB}     (ModuleA{}  ModuleB{})组成子系统
+详情请看下面链接
+http://note.youdao.com/noteshare?id=80a2283d9c0b37bece1dd9d4eec9c5c3&sub=E828DF7D86D549C3851B2C07652F7E23
 
 ------------------------------------------------------------------------------------------------------
 四、外观模式详解
