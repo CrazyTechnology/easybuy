@@ -52,7 +52,7 @@
         <spring_jms.version>2.5.6</spring_jms.version>
         <activemq.version>5.3.1</activemq.version>
         <xbean.version>4.5</xbean.version>
-        <shiro-all.version>1.3.0</shiro-all.version>
+        <shiro-all.version>1.5.0</shiro-all.version>
         <poi-versioin>3.16-beta1</poi-versioin>
         <jackson-core-version>2.8.2</jackson-core-version>
         <jackson-annotations-version>2.8.2</jackson-annotations-version>
