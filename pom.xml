@@ -56,7 +56,7 @@
         <poi-versioin>3.16-beta1</poi-versioin>
         <jackson-core-version>2.8.2</jackson-core-version>
         <jackson-annotations-version>2.8.2</jackson-annotations-version>
-        <jackson-databind-version>2.8.2</jackson-databind-version>
+        <jackson-databind-version>2.12.7.1</jackson-databind-version>
         <ehcache-spring-annotations-version>1.2.0</ehcache-spring-annotations-version>
     </properties>
     <dependencyManagement>
